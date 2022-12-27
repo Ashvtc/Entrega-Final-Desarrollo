@@ -1,10 +1,10 @@
-import 'package:flutter_pantalla_1/modelos/agregados/profesor/profesor.dart';
-import '../../API/Dtos/curso_dto.dart';
-import 'package:flutter_pantalla_1/API/api.dart';
-import '../agregados/curso/curso.dart';
-import '../fabricas/fabrica_curso.dart';
-import '../fabricas/fabrica_profesor.dart';
-import 'i_repositorio_curso_profesor.dart';
+import 'package:flutter_pantalla_1/dominio/agregados/profesor/profesor.dart';
+import '../API/Dtos/curso_dto.dart';
+import 'package:flutter_pantalla_1/infraestructura/API/api.dart';
+import '../../dominio/agregados/curso/curso.dart';
+import '../../dominio/fabricas/fabrica_curso.dart';
+import '../../dominio/fabricas/fabrica_profesor.dart';
+import '../../dominio/repositorios/i_repositorio_curso_profesor.dart';
 
 class ApiJsonRepository implements IRepositorioCursoProfesor {
   FabricaCurso fabricaCurso = FabricaCurso();

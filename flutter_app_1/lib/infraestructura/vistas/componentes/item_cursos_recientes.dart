@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../pantallas/pantalla_detalle_curso.dart';
 import 'like_curso.dart';
-import '../../modelos/parameters_objects/info_curso_con_profesor.dart';
+import '../../../dominio/parameters_objects/info_curso_con_profesor.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<bool> getdata(String idCurso) async {

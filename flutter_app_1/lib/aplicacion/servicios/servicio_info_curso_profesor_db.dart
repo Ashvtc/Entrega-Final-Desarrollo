@@ -1,9 +1,9 @@
-import 'package:flutter_pantalla_1/data/ModeloTamporal/UsuarioTemp.dart';
-import '../parameters_objects/info_curso_con_profesor.dart';
-import '../patron_iterador/iterado_generico/iterable_lista.dart';
-import '../../data/Adaptador/I_Repositoty_BD.dart';
-import '../patron_iterador/iterado_generico/iterador_lista.dart';
-import '../../data/ModeloTamporal/cursoTemp.dart';
+import 'package:flutter_pantalla_1/infraestructura/data/modelo_temporal/usuario_temp.dart';
+import '../../dominio/parameters_objects/info_curso_con_profesor.dart';
+import '../../modelos/patron_iterador/iterado_generico/iterable_lista.dart';
+import '../../modelos/patron_iterador/iterado_generico/iterador_lista.dart';
+import '../../infraestructura/data/Adaptador/i_repository_bd.dart';
+import '../../infraestructura/data/modelo_temporal/curso_temp.dart';
 
 class ServicioGuardarInfoCursoProfesorDB {
   Future<void> guardarTodosLosCursosConProfesores(

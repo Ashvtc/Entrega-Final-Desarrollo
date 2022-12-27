@@ -2,16 +2,16 @@ import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'item_cursos_recientes.dart';
-import '../../modelos/parameters_objects/info_curso_con_profesor.dart';
-import '../../modelos/patron_iterador/iterado_generico/iterable_lista.dart';
-import '../../modelos/patron_iterador/iterado_generico/iterador_lista.dart';
-import '../../modelos/servicios/servicio_info_curso_profesor.dart';
+import '../../../dominio/parameters_objects/info_curso_con_profesor.dart';
+import '../../../modelos/patron_iterador/iterado_generico/iterable_lista.dart';
+import '../../../modelos/patron_iterador/iterado_generico/iterador_lista.dart';
+import '../../../aplicacion/servicios/servicio_info_curso_profesor.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import '../../modelos/repositorios/json_repository_adapter.dart';
+import '../../adaptadores/json_adapter_curso_profesores.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import '../../modelos/repositorios/db_repository_adapter.dart';
-import '../../modelos/servicios/servicio_info_curso_profesor_db.dart';
-import '../../data/Adaptador/adaptadorMoor.dart';
+import '../../adaptadores/db_adapter_curso_profesores.dart';
+import '../../../aplicacion/servicios/servicio_info_curso_profesor_db.dart';
+import '../../data/Adaptador/adaptador_moor.dart';
 
 class CarouselCursosRecientes extends StatefulWidget {
   const CarouselCursosRecientes({Key? key}) : super(key: key);

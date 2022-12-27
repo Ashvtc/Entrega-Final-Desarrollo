@@ -1,6 +1,6 @@
 // import 'package:flutter/foundation.dart';
-import 'package:flutter_pantalla_1/API/API.dart';
-import 'package:flutter_pantalla_1/API/Dtos/curso_dto.dart';
+import 'package:flutter_pantalla_1/infraestructura/API/api.dart';
+import 'package:flutter_pantalla_1/infraestructura/API/Dtos/curso_dto.dart';
 
 class Convertidor {
   static void convertirALista(List cursos) async {

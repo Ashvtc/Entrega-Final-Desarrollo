@@ -1,14 +1,14 @@
-import '../agregados/curso/curso.dart';
-import '../agregados/profesor/profesor.dart';
-import '../agregados/curso/id_curso.dart';
-import '../agregados/profesor/id_profesor.dart';
-import '../agregados/curso/descripcion_curso.dart';
-import '../agregados/curso/logo_curso.dart';
-import '../agregados/curso/titulo_curso.dart';
-import '../agregados/profesor/nombre_profesor.dart';
-import '../parameters_objects/info_curso_con_profesor.dart';
-import '../patron_iterador/iterado_generico/iterable_lista.dart';
-import '../repositorios/i_repositorio_curso_profesor.dart';
+import '../../dominio/agregados/curso/curso.dart';
+import '../../dominio/agregados/profesor/profesor.dart';
+import '../../dominio/agregados/curso/id_curso.dart';
+import '../../dominio/agregados/profesor/id_profesor.dart';
+import '../../dominio/agregados/curso/descripcion_curso.dart';
+import '../../dominio/agregados/curso/logo_curso.dart';
+import '../../dominio/agregados/curso/titulo_curso.dart';
+import '../../dominio/agregados/profesor/nombre_profesor.dart';
+import '../../dominio/parameters_objects/info_curso_con_profesor.dart';
+import '../../modelos/patron_iterador/iterado_generico/iterable_lista.dart';
+import '../../dominio/repositorios/i_repositorio_curso_profesor.dart';
 
 class ServicioInfoCursoProfesor {
   Future<IterableLista<InfoCursoConProfesor>> getTodosLosCursosConProfesores(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_pantalla_1/vistas/pantallas/pantalla_cursos.dart';
+import 'package:flutter_pantalla_1/infraestructura/vistas/pantallas/pantalla_cursos.dart';
 
 void main() {
   runApp(const MyApp());

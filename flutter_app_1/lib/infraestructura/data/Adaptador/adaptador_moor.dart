@@ -1,13 +1,13 @@
 import 'dart:core';
 
-import 'package:flutter_pantalla_1/data/Adaptador/I_Repositoty_BD.dart';
-import 'package:flutter_pantalla_1/data/ModeloTamporal/UsuarioTemp.dart';
-import 'package:flutter_pantalla_1/data/ModeloTamporal/cursoTemp.dart';
-import 'package:flutter_pantalla_1/data/moor/moor_db.dart';
-import 'package:flutter_pantalla_1/modelos/fabricas/fabrica_curso.dart';
-import 'package:flutter_pantalla_1/modelos/fabricas/fabrica_profesor.dart';
-import '../../modelos/agregados/curso/curso.dart';
-import '../../modelos/agregados/profesor/profesor.dart';
+import '../Adaptador/i_repository_bd.dart';
+import 'package:flutter_pantalla_1/infraestructura/data/modelo_temporal/usuario_temp.dart';
+import 'package:flutter_pantalla_1/infraestructura/data/modelo_temporal/curso_temp.dart';
+import 'package:flutter_pantalla_1/infraestructura/data/moor/moor_db.dart';
+import 'package:flutter_pantalla_1/dominio/fabricas/fabrica_curso.dart';
+import 'package:flutter_pantalla_1/dominio/fabricas/fabrica_profesor.dart';
+import '../../../dominio/agregados/curso/curso.dart';
+import '../../../dominio/agregados/profesor/profesor.dart';
 
 /*
   Dataso para quien use este adapter xd

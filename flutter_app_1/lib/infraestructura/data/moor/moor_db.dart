@@ -1,6 +1,6 @@
-import 'package:flutter_pantalla_1/data/ModeloTamporal/UsuarioTemp.dart';
-import 'package:flutter_pantalla_1/data/ModeloTamporal/cursoTemp.dart';
-import 'package:flutter_pantalla_1/data/ModeloTamporal/leccionTemporal.dart';
+import 'package:flutter_pantalla_1/infraestructura/data/modelo_temporal/usuario_temp.dart';
+import 'package:flutter_pantalla_1/infraestructura/data/modelo_temporal/curso_temp.dart';
+import 'package:flutter_pantalla_1/infraestructura/data/modelo_temporal/leccion_temporal.dart';
 import 'package:moor_flutter/moor_flutter.dart';
 
 
