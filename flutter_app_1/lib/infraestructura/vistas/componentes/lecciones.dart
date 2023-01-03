@@ -15,7 +15,7 @@ class CarouselLecciones extends StatelessWidget {
         height: 140.0,
       ),
       items: const <Widget>[
-        //se elimina el widget y se agrega la lista de cursos
+        //se elimina el widget y se agrega la lista de lecciones
         ItemLecciones(),
         ItemLecciones(),
         ItemLecciones(),

@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 
-class PantallaLecciones extends StatefulWidget {
-  const PantallaLecciones({Key? key}) : super(key: key);
-
-  @override
-  State<PantallaLecciones> createState() => _PantallaLeccionesState();
-}
-
-class _PantallaLeccionesState extends State<PantallaLecciones> {
+class PantallaDetalleLeccion extends StatelessWidget {
+  final String tituloLeccion;
+  final String descripcionLeccion;
+  const PantallaDetalleLeccion(
+      this.tituloLeccion, this.descripcionLeccion,
+      {Key? key})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: ListView(
+      backgroundColor: const Color(0xFF2196F3),
+      appBar: widgetAppBar(tituloLeccion, context),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            body(context),
+            body(tituloLeccion, descripcionLeccion, context), //Se muestra la información detallada del curso
           ],
         ),
       ),
@@ -22,38 +24,68 @@ class _PantallaLeccionesState extends State<PantallaLecciones> {
   }
 }
 
-Widget body(context) {
+PreferredSizeWidget? widgetAppBar(String tituloCurso, BuildContext context) {
+  return AppBar(
+    backgroundColor: const Color(0xFF2196F3),
+    elevation: 0,
+    automaticallyImplyLeading: false,
+    leading: IconButton(
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+      icon: const Icon(Icons.arrow_back_ios),
+    ),
+    // actions: [
+    //   like(false),
+    // ],
+  );
+}
+
+
+//Informacion detallada de la leccion
+Widget body(String tituloLeccion, String descripcionLeccion, BuildContext context) { 
   Size size = MediaQuery.of(context).size;
-  return Column(
-    children: <Widget>[
-      SizedBox(
-        height: size.height * 0.2,
-        child: Stack(
-          children: <Widget>[
-            Container(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-              height: size.height * 0.2 - 27,
-              decoration: const BoxDecoration(
-                  color: Color(0xFF2196F3),
+  return SingleChildScrollView(
+    child: Column(
+      children: <Widget>[
+        SizedBox(
+          height: 800, //size.height,
+          child: Stack(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(top: size.height * 0.3),
+                height: 600,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
                   borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(36),
-                    bottomRight: Radius.circular(36),
-                  )),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'Lección',
-                    style: Theme.of(context).textTheme.headline1,
+                    topLeft: Radius.circular(24),
+                    topRight: Radius.circular(24),
                   ),
-                ],
+                ),
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 12, right: 12, top: 10.0, bottom: 10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    Text(
+                      tituloLeccion,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                    Text(
+                      descripcionLeccion,
+                      style: Theme.of(context).textTheme.subtitle1,
+                      textAlign: TextAlign.justify,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-    ],
+      ],
+    ),
   );
 }

@@ -1,27 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_pantalla_1/infraestructura/vistas/pantallas/pantalla_leccion_detallada.dart';
 
-class ItemLecciones extends StatelessWidget {
-  const ItemLecciones({super.key});
+class ItemLecciones extends StatefulWidget {
+  const ItemLecciones({Key? key}) : super(key: key);
 
   @override
+  State<ItemLecciones> createState() => _ItemLeccionesState();
+}
+
+class _ItemLeccionesState extends State<ItemLecciones> {
+  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 25.0, bottom: 20.0, top: 20.0),
-      child: Container(
-        decoration: boxDecoration(context),
-        child: Padding(
-          padding: const EdgeInsets.all(25.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              infoLeccion(context),
-            ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (BuildContext context) {
+              return const PantallaDetalleLeccion(
+                  '[Leccion]',
+                  '[Descripcion de la leccion]');
+            },
           ),
-        ),
-      ),
+        );
+      },
+      child: itemLeccionDetalle(context),
     );
   }
+}
+
+Widget itemLeccionDetalle(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.only(right: 25.0, bottom: 20.0, top: 20.0),
+    child: Container(
+      decoration: boxDecoration(context),
+      child: Padding(
+        padding: const EdgeInsets.all(25.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+            ),
+            infoLeccion(context),
+          ],
+        ),
+      ),
+    ),
+  );
 }
 
 BoxDecoration boxDecoration(context) {

@@ -13,11 +13,11 @@ class _PantallaCursosState extends State<PantallaCursos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),                //AppBar (Menú)
+      appBar: buildAppBar(),                //AppBar (Menú superior izquierdo)
       body: SafeArea(
         child: ListView(
           children: <Widget>[
-            body(context),                  //Contenedor azul superior donde se da la bienvenida
+            body(context),                  //Contenedor azul superior donde se da la bienvenida a la plataforma
             cursosRecientes(context),       //Se muestra el carrusel de cursos recientes del usuario
             cursosRecomendados(context),    //Se muestra el carrusel de cursos recomendados para el usuario
           ],
