@@ -77,11 +77,11 @@ Widget body(String tituloLeccion, String descripcionLeccion, BuildContext contex
     child: Column(
       children: <Widget>[
         SizedBox(
-          height: 800, //size.height,
+          height: 600, //size.height,
           child: Stack(
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(top: size.height * 0.3),
+                margin: EdgeInsets.only(top: size.height * 0.1),
                 height: 600,
                 decoration: const BoxDecoration(
                   color: Colors.white,
