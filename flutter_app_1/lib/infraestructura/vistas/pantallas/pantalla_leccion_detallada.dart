@@ -1,25 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class PantallaDetalleLeccion extends StatelessWidget {
+class PantallaDetalleLeccion extends StatefulWidget{
   final String tituloLeccion;
   final String descripcionLeccion;
-  const PantallaDetalleLeccion(
-      this.tituloLeccion, this.descripcionLeccion,
-      {Key? key})
-      : super(key: key);
+  const PantallaDetalleLeccion(this.tituloLeccion, this.descripcionLeccion, {Key? key}) : super(key: key);
+
+  @override
+  State<PantallaDetalleLeccion> createState() => _PantallaDetalleLeccionState();
+}
+
+class _PantallaDetalleLeccionState extends State<PantallaDetalleLeccion> {
+  late YoutubePlayerController controller;
+  
+  @override
+  void initState() {
+    super.initState();
+
+    String url = 'https://www.youtube.com/watch?v=rPYMbhR-8RU';
+
+    controller = YoutubePlayerController(initialVideoId: YoutubePlayer.convertUrlToId(url)!,
+    flags: const YoutubePlayerFlags(
+      mute: false,
+      loop: false,
+      autoPlay: false,
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFF2196F3),
-      appBar: widgetAppBar(tituloLeccion, context),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            body(tituloLeccion, descripcionLeccion, context), //Se muestra la información detallada del curso
-          ],
-        ),
+    return YoutubePlayerBuilder(
+      player: YoutubePlayer(
+        controller: controller,
       ),
+      builder: (context, player) {
+        return Scaffold(
+          backgroundColor: const Color(0xFF2196F3),
+          appBar: widgetAppBar(widget.tituloLeccion, context),
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                player,
+                body(widget.tituloLeccion, widget.descripcionLeccion, context), //Se muestra la información detallada del curso
+              ],
+            ),
+          ),
+        );
+      }
     );
   }
 }
