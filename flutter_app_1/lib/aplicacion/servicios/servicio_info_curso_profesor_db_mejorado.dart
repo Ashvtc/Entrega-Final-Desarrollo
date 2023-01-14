@@ -8,9 +8,9 @@ import '../../modelos/patron_iterador/iterado_generico/iterador_lista.dart';
 import '../../infraestructura/data/Adaptador/i_repository_bd.dart';
 import '../../infraestructura/data/modelo_temporal/curso_temp.dart';
 
-class ServicioGuardarInfoCursoProfesorDBMejorado implements IService<ParametroAdaptadorIterable<IRepositorioMoor, IterableLista<InfoCursoConProfesor>>>{
+class ServicioGuardarInfoCursoProfesorDBMejorado implements IService<bool, ParametroAdaptadorIterable<IRepositorioMoor, IterableLista<InfoCursoConProfesor>>>{
   @override
-  Future<Result<T>> execute<T>(ParametroAdaptadorIterable<IRepositorioMoor, IterableLista<InfoCursoConProfesor>> parametro) async {
+  Future<Result<bool>> execute(ParametroAdaptadorIterable<IRepositorioMoor, IterableLista<InfoCursoConProfesor>> parametro) async {
     IRepositorioMoor adaptadorCursoProfesor = parametro.getAdaptador();
     IterableLista<InfoCursoConProfesor>? datos = parametro.getIterable();
     IteradorLista<InfoCursoConProfesor> iteradorDatos = datos.crearIterador();
@@ -21,7 +21,7 @@ class ServicioGuardarInfoCursoProfesorDBMejorado implements IService<ParametroAd
     adaptadorCursoProfesor.guardarTodosLosUsuarios(traducirProfesores(iteradorDatos));
     adaptadorCursoProfesor.close();
 
-    Result<T> nulo = Result();
+    Result<bool> nulo = Result();
     return nulo;
   }
 

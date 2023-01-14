@@ -3,11 +3,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pantalla_1/aplicacion/parameter_objects/parametro_adaptador_iterable.dart';
 import 'package:flutter_pantalla_1/aplicacion/servicios/servicio_info_curso_profesor_db_mejorado.dart';
+import 'package:flutter_pantalla_1/aplicacion/servicios/servicio_obtener_info_curso_profesor_mejorado.dart';
+import 'package:flutter_pantalla_1/modelos/result.dart';
 import 'item_cursos_recientes.dart';
 import '../../../dominio/parameters_objects/info_curso_con_profesor.dart';
 import '../../../modelos/patron_iterador/iterado_generico/iterable_lista.dart';
 import '../../../modelos/patron_iterador/iterado_generico/iterador_lista.dart';
-import '../../../aplicacion/servicios/servicio_info_curso_profesor.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../../adaptadores/json_adapter_curso_profesores.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -23,7 +24,7 @@ class CarouselCursosRecientes extends StatefulWidget {
 }
 
 class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
-  ServicioInfoCursoProfesor servicio = ServicioInfoCursoProfesor();
+  ServicioObtenerInfoCursoProfesorMejorado servicio = ServicioObtenerInfoCursoProfesorMejorado();
   ServicioGuardarInfoCursoProfesorDBMejorado servicioGuardarLocal = ServicioGuardarInfoCursoProfesorDBMejorado();
   IterableLista<InfoCursoConProfesor>? iterableCursos;
   IteradorLista<InfoCursoConProfesor>? iteradorCursos;
@@ -70,17 +71,17 @@ class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
   }
 
   getApiData() async {
-    iterableCursos =
-        await servicio.getTodosLosCursosConProfesores(ApiJsonRepository());
-    if (iterableCursos != null) {
+    Result<IterableLista<InfoCursoConProfesor>> resultado = await servicio.execute(ApiJsonRepository());
+    if (resultado.satisfactorio()) {
+      iterableCursos = resultado.valor;
       prepareData();
     }
   }
 
   getLocalStoredData() async {
-    iterableCursos =
-        await servicio.getTodosLosCursosConProfesores(ApiBDRepository());
-    if (iterableCursos != null) {
+    Result<IterableLista<InfoCursoConProfesor>> resultado = await servicio.execute(ApiBDRepository());
+    if (resultado.satisfactorio()) {
+      iterableCursos = resultado.valor;
       prepareData();
     }
   }

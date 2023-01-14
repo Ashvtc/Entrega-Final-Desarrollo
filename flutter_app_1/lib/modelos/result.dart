@@ -1,14 +1,18 @@
 class Result<T> {
-  T? resultado;
+  T? valor;
   Exception? exception;
 
-  Result({this.resultado, this.exception});
+  Result({this.valor, this.exception});
 
   T? getResultado() {
-    return resultado;
+    return valor;
   }
 
   Exception? getException() {
     return exception;
+  }
+
+  bool satisfactorio() {
+    return valor!=null? true: false;
   }
 }
