@@ -47,6 +47,7 @@ dependencies:
   like_button: any
   connectivity_plus: ^3.0.2
   youtube_player_flutter: ^8.1.2
+  sidebar: ^0.0.1
 
 dev_dependencies:
   flutter_test:

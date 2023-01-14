@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import '../../../navbar.dart';
 import '../componentes/cursos_recientes.dart';
 import '../componentes/cursos_recomendados.dart';
+
 
 class PantallaCursos extends StatefulWidget {
   const PantallaCursos({Key? key}) : super(key: key);
@@ -13,7 +15,10 @@ class _PantallaCursosState extends State<PantallaCursos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),                //AppBar (Menú superior izquierdo)
+      drawer: const NavBar(),
+      appBar: AppBar(
+        elevation: 0,
+      ), 
       body: SafeArea(
         child: ListView(
           children: <Widget>[
@@ -25,19 +30,6 @@ class _PantallaCursosState extends State<PantallaCursos> {
       ),
     );
   }
-}
-
-AppBar buildAppBar() {
-  return AppBar(
-    elevation: 0,
-    leading: IconButton(
-      icon: Image.asset(
-        'assets/imgs/menu.png',
-        width: 25.0,
-      ),
-      onPressed: null,
-    ),
-  );
 }
 
 Widget body(context) {
