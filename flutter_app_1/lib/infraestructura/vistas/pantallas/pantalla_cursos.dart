@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../navbar.dart';
+import '../componentes/navbar.dart';
 import '../componentes/cursos_recientes.dart';
 import '../componentes/cursos_recomendados.dart';
 
