@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_pantalla_1/aplicacion/parameter_objects/parametro_adaptador_iterable.dart';
+import 'package:flutter_pantalla_1/aplicacion/servicios/servicio_info_curso_profesor_db_mejorado.dart';
 import 'item_cursos_recientes.dart';
 import '../../../dominio/parameters_objects/info_curso_con_profesor.dart';
 import '../../../modelos/patron_iterador/iterado_generico/iterable_lista.dart';
@@ -10,7 +12,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import '../../adaptadores/json_adapter_curso_profesores.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import '../../adaptadores/db_adapter_curso_profesores.dart';
-import '../../../aplicacion/servicios/servicio_info_curso_profesor_db.dart';
 import '../../data/Adaptador/adaptador_moor.dart';
 
 class CarouselCursosRecientes extends StatefulWidget {
@@ -23,8 +24,7 @@ class CarouselCursosRecientes extends StatefulWidget {
 
 class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
   ServicioInfoCursoProfesor servicio = ServicioInfoCursoProfesor();
-  ServicioGuardarInfoCursoProfesorDB servicioGuardarLocal =
-      ServicioGuardarInfoCursoProfesorDB();
+  ServicioGuardarInfoCursoProfesorDBMejorado servicioGuardarLocal = ServicioGuardarInfoCursoProfesorDBMejorado();
   IterableLista<InfoCursoConProfesor>? iterableCursos;
   IteradorLista<InfoCursoConProfesor>? iteradorCursos;
   int elementosIterador = 0;
@@ -86,8 +86,8 @@ class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
   }
 
   storeDataLocal() async {
-    await servicioGuardarLocal.guardarTodosLosCursosConProfesores(
-        AdaptadorMoor(), iterableCursos);
+    ParametroAdaptadorIterable<AdaptadorMoor, IterableLista<InfoCursoConProfesor>> parametro = ParametroAdaptadorIterable(adaptador: AdaptadorMoor(), iterable: iterableCursos!);
+    await servicioGuardarLocal.execute(parametro);
   }
 
   prepareData() {
