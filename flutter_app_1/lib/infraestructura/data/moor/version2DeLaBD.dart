@@ -17,6 +17,7 @@ class MoorCurso extends Table {
   TextColumn get titulo => text()();
   TextColumn get descripcion => text()();
   IntColumn get idProf => integer()();
+  TextColumn get estado => text()();
 
 }
 // tampoco hay q cambiar nada aqui
@@ -153,7 +154,8 @@ CursoTemp moorCursoToCurso(MoorCursoData curso) {
       logo: curso.logo,
       titulo: curso.titulo,
       descripcion: curso.descripcion,
-      idProf: curso.idProf
+      idProf: curso.idProf,
+      estado : curso.estado,
   );
 }
 
@@ -164,6 +166,7 @@ Insertable<MoorCursoData> cursoToInsertableMoorCurso (CursoTemp curso){
     titulo: curso.titulo ?? '',
     descripcion: curso.descripcion ?? '',
     idProf: curso.idProf ?? 0,
+    estado: curso.estado ?? '',
   );
 }
 

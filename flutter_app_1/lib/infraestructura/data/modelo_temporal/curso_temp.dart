@@ -6,6 +6,7 @@ class CursoTemp {
   String titulo;
   String descripcion;
   int idProf;
+  //String estado;
 
   CursoTemp(
       {
@@ -14,6 +15,8 @@ class CursoTemp {
         required this.logo,
         required this.titulo,
         required this.descripcion,
-        required this.idProf});
+        required this.idProf
+        //required this.estado
+      });
 
 }
