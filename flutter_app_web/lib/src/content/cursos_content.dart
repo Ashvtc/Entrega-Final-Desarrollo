@@ -46,6 +46,7 @@ class CursosContentResponsive extends StatelessWidget {
                 decoration: 
                   InputDecoration(border: OutlineInputBorder(), labelText: 'Id')),
             ),
+            SizedBox(height: 4),
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: TextField(
@@ -53,6 +54,7 @@ class CursosContentResponsive extends StatelessWidget {
                 decoration: 
                   InputDecoration(border: OutlineInputBorder(), labelText: 'Titulo')),
             ),
+            SizedBox(height: 4),
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: TextField(
@@ -60,6 +62,7 @@ class CursosContentResponsive extends StatelessWidget {
                 decoration: 
                   InputDecoration(border: OutlineInputBorder(), labelText: 'Logo (URL)')),
             ),
+            SizedBox(height: 4),
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: TextField(
@@ -67,6 +70,7 @@ class CursosContentResponsive extends StatelessWidget {
                 decoration: 
                   InputDecoration(border: OutlineInputBorder(), labelText: 'Profesor')),
             ),
+            SizedBox(height: 4),
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: TextField(
@@ -74,6 +78,7 @@ class CursosContentResponsive extends StatelessWidget {
                 decoration: 
                   InputDecoration(border: OutlineInputBorder(), labelText: 'Descripcion')),
             ),
+            SizedBox(height: 4),
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               alignment: Alignment.center,
@@ -91,35 +96,9 @@ class CursosContentResponsive extends StatelessWidget {
               )
             ),
             SizedBox(height: 24),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                ],
-              ),
-            )
           ],
         ),
       ),
-    );
-  }
-}
-
-class _Image extends StatelessWidget {
-  final String image;
-
-  const _Image({Key? key, required this.image}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SizedBox(width: 16),
-        Image.asset(image),
-        SizedBox(width: 16),
-      ],
     );
   }
 }

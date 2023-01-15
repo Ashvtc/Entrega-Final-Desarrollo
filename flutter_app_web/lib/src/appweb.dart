@@ -1,6 +1,8 @@
 import 'package:flutter_app_web/src/content/home_content.dart';
 import 'package:flutter_app_web/src/content/cursos_content.dart';
+import 'package:flutter_app_web/src/content/cursosdelete_content.dart';
 import 'package:flutter_app_web/src/content/lecciones_content.dart';
+import 'package:flutter_app_web/src/content/leccionesdelete_content.dart';
 import 'package:flutter_app_web/src/navigation_bar/nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -59,7 +61,9 @@ class AppWeb extends HookConsumerWidget {
                     children: <Widget>[
                       HomeContent(key: homeKey),
                       CursosContent(key: CursosKey),
+                      CursosDeleteContent(),
                       LeccionesContent(key: LeccionesKey),
+                      LeccionesDeleteContent(),
                       SizedBox(height: 50)
                     ],
                   ),

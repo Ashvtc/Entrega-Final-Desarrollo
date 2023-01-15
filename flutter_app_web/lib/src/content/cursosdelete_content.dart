@@ -1,24 +1,26 @@
+import 'dart:html';
+import 'package:http/http.dart' as http;
+
 import 'package:flutter_app_web/src/widgets/responsive_widget.dart';
 import 'package:flutter/material.dart';
 
-class LeccionesContent extends ResponsiveWidget {
-  const LeccionesContent({Key? key}) : super(key: key);
+class CursosDeleteContent extends ResponsiveWidget {
+  const CursosDeleteContent({Key? key}) : super(key: key);
 
   @override
-  Widget buildDesktop(BuildContext context) => LeccionesContentResponsive(200);
+  Widget buildDesktop(BuildContext context) => CursosDeleteContentResponsive(200);
 
   @override
-  Widget buildMobile(BuildContext context) => LeccionesContentResponsive(24);
+  Widget buildMobile(BuildContext context) => CursosDeleteContentResponsive(24);
 }
 
-class LeccionesContentResponsive extends StatelessWidget {
+class CursosDeleteContentResponsive extends StatelessWidget {
   final horizontalPadding;
 
-  LeccionesContentResponsive(this.horizontalPadding);
+  CursosDeleteContentResponsive(this.horizontalPadding);
 
-  final leccionid = TextEditingController();
-  final lecciontitulo = TextEditingController();
-  final lecciondescripcion = TextEditingController();
+  final cursoid = TextEditingController();  
+  
 
   @override
   Widget build(BuildContext context) {
@@ -28,34 +30,17 @@ class LeccionesContentResponsive extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              "Añade una Leccion",
+              "Elimina un Curso",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
             ),
             SizedBox(height: 24),
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: TextField(
-                controller: leccionid,
+                controller: cursoid,
                 decoration: 
                   InputDecoration(border: OutlineInputBorder(), labelText: 'Id')),
             ),
-            SizedBox(height: 4),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-              child: TextField(
-                controller: lecciontitulo,
-                decoration: 
-                  InputDecoration(border: OutlineInputBorder(), labelText: 'Titulo')),
-            ),
-            SizedBox(height: 4),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-              child: TextField(
-                controller: lecciondescripcion,
-                decoration: 
-                  InputDecoration(border: OutlineInputBorder(), labelText: 'Descripcion')),
-            ),
-            SizedBox(height: 4),
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               alignment: Alignment.center,
@@ -64,7 +49,7 @@ class LeccionesContentResponsive extends StatelessWidget {
                   print('El Boton Funciona');
                 },
                 child: Text(
-                  'Ingresar',
+                  'Eliminar',
                   style: TextStyle(
                     fontSize: 18,
                     fontFamily: 'rbold'
@@ -80,8 +65,8 @@ class LeccionesContentResponsive extends StatelessWidget {
   }
 }
 
-class LessonContent extends StatelessWidget {
-  const LessonContent({Key? key}) : super(key: key);
+class CourseContent extends StatelessWidget {
+  const CourseContent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -90,4 +75,15 @@ class LessonContent extends StatelessWidget {
       height: 250,
     );
   }
+}
+
+
+
+crearcurso(String Text) async{
+  var url = Uri.https('example.com', 'whatsit/create');
+  var response = await http.post(url, body: {'name': 'doodle', 'color': 'blue'});
+  print('Response status: ${response.statusCode}');
+  print('Response body: ${response.body}');
+
+  print(await http.read(Uri.https('example.com', 'foobar.txt')));
 }
