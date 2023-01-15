@@ -12,6 +12,7 @@ class Curso {
   DescripcionCurso descripcion;
   IdProfesor profesor;
   //LeccionesCurso lecciones;
+  //String estado;
 
   Curso(
       {required this.id,
@@ -20,6 +21,7 @@ class Curso {
       required this.descripcion,
       required this.profesor
       //required this.lecciones
+      //required this.estado
       });
 
   String getLogo() {
