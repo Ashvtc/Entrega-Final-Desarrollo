@@ -11,15 +11,16 @@ class Curso {
   TituloCurso titulo;
   DescripcionCurso descripcion;
   IdProfesor profesor;
-  LeccionesCurso lecciones;
+  //LeccionesCurso lecciones;
 
   Curso(
       {required this.id,
       required this.logo,
       required this.titulo,
       required this.descripcion,
-      required this.profesor,
-      required this.lecciones});
+      required this.profesor
+      //required this.lecciones
+      });
 
   String getLogo() {
     return logo.getLogo();
@@ -41,8 +42,8 @@ class Curso {
     return profesor;
   }
 
-  LeccionesCurso getLecciones(){
+  /*LeccionesCurso getLecciones(){
     return lecciones;
-  }
+  }*/
 
 }
