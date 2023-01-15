@@ -78,7 +78,7 @@ class CursosContentResponsive extends StatelessWidget {
                 decoration: 
                   InputDecoration(border: OutlineInputBorder(), labelText: 'Descripcion')),
             ),
-            SizedBox(height: 4),
+            SizedBox(height: 10),
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               alignment: Alignment.center,

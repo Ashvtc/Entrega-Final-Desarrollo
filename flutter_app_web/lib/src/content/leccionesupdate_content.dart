@@ -1,20 +1,20 @@
 import 'package:flutter_app_web/src/widgets/responsive_widget.dart';
 import 'package:flutter/material.dart';
 
-class LeccionesContent extends ResponsiveWidget {
-  const LeccionesContent({Key? key}) : super(key: key);
+class LeccionesUpdateContent extends ResponsiveWidget {
+  const LeccionesUpdateContent({Key? key}) : super(key: key);
 
   @override
-  Widget buildDesktop(BuildContext context) => LeccionesContentResponsive(200);
+  Widget buildDesktop(BuildContext context) => LeccionesUpdateContentResponsive(200);
 
   @override
-  Widget buildMobile(BuildContext context) => LeccionesContentResponsive(24);
+  Widget buildMobile(BuildContext context) => LeccionesUpdateContentResponsive(24);
 }
 
-class LeccionesContentResponsive extends StatelessWidget {
+class LeccionesUpdateContentResponsive extends StatelessWidget {
   final horizontalPadding;
 
-  LeccionesContentResponsive(this.horizontalPadding);
+  LeccionesUpdateContentResponsive(this.horizontalPadding);
 
   final leccionid = TextEditingController();
   final lecciontitulo = TextEditingController();
@@ -28,7 +28,7 @@ class LeccionesContentResponsive extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              "Añade una Leccion",
+              "Modifica una Leccion",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
             ),
             SizedBox(height: 24),
@@ -64,7 +64,7 @@ class LeccionesContentResponsive extends StatelessWidget {
                   print('El Boton Funciona');
                 },
                 child: Text(
-                  'Añadir',
+                  'Ingresar',
                   style: TextStyle(
                     fontSize: 18,
                     fontFamily: 'rbold'

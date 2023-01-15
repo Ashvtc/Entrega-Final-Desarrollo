@@ -1,24 +1,31 @@
+import 'dart:html';
+import 'package:http/http.dart' as http;
+
 import 'package:flutter_app_web/src/widgets/responsive_widget.dart';
 import 'package:flutter/material.dart';
 
-class LeccionesContent extends ResponsiveWidget {
-  const LeccionesContent({Key? key}) : super(key: key);
+class CursosUpdateContent extends ResponsiveWidget {
+  const CursosUpdateContent({Key? key}) : super(key: key);
 
   @override
-  Widget buildDesktop(BuildContext context) => LeccionesContentResponsive(200);
+  Widget buildDesktop(BuildContext context) => CursosUpdateContentResponsive(200);
 
   @override
-  Widget buildMobile(BuildContext context) => LeccionesContentResponsive(24);
+  Widget buildMobile(BuildContext context) => CursosUpdateContentResponsive(24);
 }
 
-class LeccionesContentResponsive extends StatelessWidget {
+class CursosUpdateContentResponsive extends StatelessWidget {
   final horizontalPadding;
 
-  LeccionesContentResponsive(this.horizontalPadding);
+  CursosUpdateContentResponsive(this.horizontalPadding);
 
-  final leccionid = TextEditingController();
-  final lecciontitulo = TextEditingController();
-  final lecciondescripcion = TextEditingController();
+  final cursoid = TextEditingController();
+  final cursotitulo = TextEditingController();
+  final cursologo = TextEditingController();
+  final cursoprofesor = TextEditingController();
+  final cursodescripcion = TextEditingController();
+  
+  
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +35,14 @@ class LeccionesContentResponsive extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              "Añade una Leccion",
+              "Modifica un Curso",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
             ),
             SizedBox(height: 24),
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: TextField(
-                controller: leccionid,
+                controller: cursoid,
                 decoration: 
                   InputDecoration(border: OutlineInputBorder(), labelText: 'Id')),
             ),
@@ -43,7 +50,7 @@ class LeccionesContentResponsive extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: TextField(
-                controller: lecciontitulo,
+                controller: cursotitulo,
                 decoration: 
                   InputDecoration(border: OutlineInputBorder(), labelText: 'Titulo')),
             ),
@@ -51,7 +58,23 @@ class LeccionesContentResponsive extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: TextField(
-                controller: lecciondescripcion,
+                controller: cursologo,
+                decoration: 
+                  InputDecoration(border: OutlineInputBorder(), labelText: 'Logo (URL)')),
+            ),
+            SizedBox(height: 4),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+              child: TextField(
+                controller: cursoprofesor,
+                decoration: 
+                  InputDecoration(border: OutlineInputBorder(), labelText: 'Profesor')),
+            ),
+            SizedBox(height: 4),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+              child: TextField(
+                controller: cursodescripcion,
                 decoration: 
                   InputDecoration(border: OutlineInputBorder(), labelText: 'Descripcion')),
             ),
@@ -64,7 +87,7 @@ class LeccionesContentResponsive extends StatelessWidget {
                   print('El Boton Funciona');
                 },
                 child: Text(
-                  'Añadir',
+                  'Actualizar',
                   style: TextStyle(
                     fontSize: 18,
                     fontFamily: 'rbold'
@@ -80,8 +103,8 @@ class LeccionesContentResponsive extends StatelessWidget {
   }
 }
 
-class LessonContent extends StatelessWidget {
-  const LessonContent({Key? key}) : super(key: key);
+class CourseContent extends StatelessWidget {
+  const CourseContent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -90,4 +113,15 @@ class LessonContent extends StatelessWidget {
       height: 250,
     );
   }
+}
+
+
+
+crearcurso(String Text) async{
+  var url = Uri.https('example.com', 'whatsit/create');
+  var response = await http.post(url, body: {'name': 'doodle', 'color': 'blue'});
+  print('Response status: ${response.statusCode}');
+  print('Response body: ${response.body}');
+
+  print(await http.read(Uri.https('example.com', 'foobar.txt')));
 }

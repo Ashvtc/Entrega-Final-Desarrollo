@@ -37,6 +37,7 @@ class LeccionesDeleteContentResponsive extends StatelessWidget {
                 decoration: 
                   InputDecoration(border: OutlineInputBorder(), labelText: 'Id')),
             ),
+            SizedBox(height: 10),
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               alignment: Alignment.center,
