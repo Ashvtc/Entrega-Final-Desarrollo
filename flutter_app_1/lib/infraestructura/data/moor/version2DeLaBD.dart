@@ -5,7 +5,7 @@ import 'package:flutter_pantalla_1/infraestructura/data/moor/moor_db.dart';
 import 'package:moor_flutter/moor_flutter.dart';
 
 // En teoria esta listo, solo habria q reemplazar esto en el archivo de la bd y correr los comandos de migraciones, pero no lo voy a hacer hasta q este lista la api
-// y se pueda probar bien, por si se van a hacer mas cambios y necesitan probar con la api vieja 
+// y se pueda probar bien, por si se van a hacer mas cambios y necesitan probar con la api vieja
 
 part 'moor_db.g.dart';
 
@@ -28,7 +28,7 @@ class MoorLeccion extends Table{
   IntColumn get idCurso => integer()(); //Aqui debe haber una FK
 }
 
-// Ya no es necesario pero dejarlo podriamos cambiar menos vainas capaz
+// Ya no es necesario pero dejarlo cambia menos vainas
 class MoorUsuario extends Table{
   IntColumn get BDid => integer().autoIncrement()();
   IntColumn get idProf => integer()();

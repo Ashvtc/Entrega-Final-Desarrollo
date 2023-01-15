@@ -1,3 +1,4 @@
+import 'package:flutter_pantalla_1/dominio/agregados/curso/lecciones_curso.dart';
 import 'package:flutter_pantalla_1/dominio/agregados/curso/logo_curso.dart';
 import 'package:flutter_pantalla_1/dominio/agregados/curso/titulo_curso.dart';
 import 'package:flutter_pantalla_1/dominio/agregados/curso/descripcion_curso.dart';
@@ -10,13 +11,15 @@ class Curso {
   TituloCurso titulo;
   DescripcionCurso descripcion;
   IdProfesor profesor;
+  LeccionesCurso lecciones;
 
   Curso(
       {required this.id,
       required this.logo,
       required this.titulo,
       required this.descripcion,
-      required this.profesor});
+      required this.profesor,
+      required this.lecciones});
 
   String getLogo() {
     return logo.getLogo();
@@ -37,4 +40,9 @@ class Curso {
   IdProfesor getIdProfesor() {
     return profesor;
   }
+
+  LeccionesCurso getLecciones(){
+    return lecciones;
+  }
+
 }
