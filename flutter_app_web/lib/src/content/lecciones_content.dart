@@ -14,7 +14,11 @@ class LeccionesContent extends ResponsiveWidget {
 class LeccionesContentResponsive extends StatelessWidget {
   final horizontalPadding;
 
-  const LeccionesContentResponsive(this.horizontalPadding);
+  LeccionesContentResponsive(this.horizontalPadding);
+
+  final leccionid = TextEditingController();
+  final lecciontitulo = TextEditingController();
+  final lecciondescripcion = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +32,42 @@ class LeccionesContentResponsive extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
             ),
             SizedBox(height: 24),
-            Padding(
+            Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-              child: Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-              ),
+              child: TextField(
+                controller: leccionid,
+                decoration: 
+                  InputDecoration(border: OutlineInputBorder(), labelText: 'Id')),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+              child: TextField(
+                controller: lecciontitulo,
+                decoration: 
+                  InputDecoration(border: OutlineInputBorder(), labelText: 'Titulo')),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+              child: TextField(
+                controller: lecciondescripcion,
+                decoration: 
+                  InputDecoration(border: OutlineInputBorder(), labelText: 'Descripcion')),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+              alignment: Alignment.center,
+              child: ElevatedButton(
+                onPressed: (){
+                  print('El Boton Funciona');
+                },
+                child: Text(
+                  'Ingresar',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: 'rbold'
+                  )
+                )
+              )
             ),
             SizedBox(height: 24),
             SingleChildScrollView(

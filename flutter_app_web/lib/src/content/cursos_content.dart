@@ -19,10 +19,12 @@ class CursosContentResponsive extends StatelessWidget {
 
   CursosContentResponsive(this.horizontalPadding);
 
-  final cursonombre = TextEditingController();
-  final cursodescripcion = TextEditingController();
+  final cursoid = TextEditingController();
+  final cursotitulo = TextEditingController();
+  final cursologo = TextEditingController();
   final cursoprofesor = TextEditingController();
-  final cursoimagen = TextEditingController();
+  final cursodescripcion = TextEditingController();
+  
   
 
   @override
@@ -40,16 +42,23 @@ class CursosContentResponsive extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: TextField(
-                controller: cursonombre,
+                controller: cursoid,
                 decoration: 
-                  InputDecoration(border: OutlineInputBorder(), labelText: 'Nombre')),
+                  InputDecoration(border: OutlineInputBorder(), labelText: 'Id')),
             ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: TextField(
-                controller: cursodescripcion,
+                controller: cursotitulo,
                 decoration: 
-                  InputDecoration(border: OutlineInputBorder(), labelText: 'Descripcion')),
+                  InputDecoration(border: OutlineInputBorder(), labelText: 'Titulo')),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+              child: TextField(
+                controller: cursologo,
+                decoration: 
+                  InputDecoration(border: OutlineInputBorder(), labelText: 'Logo (URL)')),
             ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
@@ -61,9 +70,9 @@ class CursosContentResponsive extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: TextField(
-                controller: cursoimagen,
+                controller: cursodescripcion,
                 decoration: 
-                  InputDecoration(border: OutlineInputBorder(), labelText: 'Imagen')),
+                  InputDecoration(border: OutlineInputBorder(), labelText: 'Descripcion')),
             ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
