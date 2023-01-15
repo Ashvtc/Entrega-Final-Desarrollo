@@ -1,4 +1,4 @@
-import 'package:flutter_app_web/src/widgets/responsive_widget.dart';
+import 'package:flutter_app_web/infraestructura/vistas/componentes/widgets/responsive_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 

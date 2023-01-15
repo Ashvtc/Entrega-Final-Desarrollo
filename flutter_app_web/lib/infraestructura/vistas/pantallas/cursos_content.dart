@@ -1,8 +1,10 @@
 import 'dart:html';
 import 'package:http/http.dart' as http;
 
-import 'package:flutter_app_web/src/widgets/responsive_widget.dart';
+import 'package:flutter_app_web/infraestructura/vistas/componentes/widgets/responsive_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../../../aplicacion/servicios/servicio_curso_insertar.dart';
 
 class CursosContent extends ResponsiveWidget {
   const CursosContent({Key? key}) : super(key: key);
@@ -83,8 +85,8 @@ class CursosContentResponsive extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               alignment: Alignment.center,
               child: ElevatedButton(
-                onPressed: (){
-                  print('El Boton Funciona');
+                onPressed: () async {
+                  InsertarCursoService().InsertarCurso();
                 },
                 child: Text(
                   'Ingresar',
@@ -117,11 +119,3 @@ class CourseContent extends StatelessWidget {
 
 
 
-crearcurso(String Text) async{
-  var url = Uri.https('example.com', 'whatsit/create');
-  var response = await http.post(url, body: {'name': 'doodle', 'color': 'blue'});
-  print('Response status: ${response.statusCode}');
-  print('Response body: ${response.body}');
-
-  print(await http.read(Uri.https('example.com', 'foobar.txt')));
-}

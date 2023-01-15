@@ -1,5 +1,7 @@
-import 'package:flutter_app_web/src/widgets/responsive_widget.dart';
+import 'package:flutter_app_web/infraestructura/vistas/componentes/widgets/responsive_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../../../aplicacion/servicios/servicio_leccion_actualizar.dart';
 
 class LeccionesUpdateContent extends ResponsiveWidget {
   const LeccionesUpdateContent({Key? key}) : super(key: key);
@@ -61,7 +63,7 @@ class LeccionesUpdateContentResponsive extends StatelessWidget {
               alignment: Alignment.center,
               child: ElevatedButton(
                 onPressed: (){
-                  print('El Boton Funciona');
+                  ActualizarLeccionService().ActualizarLeccion();
                 },
                 child: Text(
                   'Ingresar',

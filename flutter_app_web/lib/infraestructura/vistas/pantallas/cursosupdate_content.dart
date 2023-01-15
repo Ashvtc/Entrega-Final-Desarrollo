@@ -1,8 +1,10 @@
 import 'dart:html';
 import 'package:http/http.dart' as http;
 
-import 'package:flutter_app_web/src/widgets/responsive_widget.dart';
+import 'package:flutter_app_web/infraestructura/vistas/componentes/widgets/responsive_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../../../aplicacion/servicios/servicio_curso_actualizar.dart';
 
 class CursosUpdateContent extends ResponsiveWidget {
   const CursosUpdateContent({Key? key}) : super(key: key);
@@ -84,7 +86,7 @@ class CursosUpdateContentResponsive extends StatelessWidget {
               alignment: Alignment.center,
               child: ElevatedButton(
                 onPressed: (){
-                  print('El Boton Funciona');
+                  ActualizarCursoService().ActualizarCurso();
                 },
                 child: Text(
                   'Actualizar',

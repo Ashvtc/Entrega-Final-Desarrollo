@@ -1,22 +1,26 @@
-import 'package:flutter_app_web/src/widgets/responsive_widget.dart';
+import 'package:flutter_app_web/infraestructura/vistas/componentes/widgets/responsive_widget.dart';
 import 'package:flutter/material.dart';
 
-class LeccionesDeleteContent extends ResponsiveWidget {
-  const LeccionesDeleteContent({Key? key}) : super(key: key);
+import '../../../aplicacion/servicios/servicio_leccion_insertar.dart';
+
+class LeccionesContent extends ResponsiveWidget {
+  const LeccionesContent({Key? key}) : super(key: key);
 
   @override
-  Widget buildDesktop(BuildContext context) => LeccionesDeleteContentResponsive(200);
+  Widget buildDesktop(BuildContext context) => LeccionesContentResponsive(200);
 
   @override
-  Widget buildMobile(BuildContext context) => LeccionesDeleteContentResponsive(24);
+  Widget buildMobile(BuildContext context) => LeccionesContentResponsive(24);
 }
 
-class LeccionesDeleteContentResponsive extends StatelessWidget {
+class LeccionesContentResponsive extends StatelessWidget {
   final horizontalPadding;
 
-  LeccionesDeleteContentResponsive(this.horizontalPadding);
+  LeccionesContentResponsive(this.horizontalPadding);
 
   final leccionid = TextEditingController();
+  final lecciontitulo = TextEditingController();
+  final lecciondescripcion = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +30,7 @@ class LeccionesDeleteContentResponsive extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              "Elimina una Leccion",
+              "Añade una Leccion",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
             ),
             SizedBox(height: 24),
@@ -37,16 +41,32 @@ class LeccionesDeleteContentResponsive extends StatelessWidget {
                 decoration: 
                   InputDecoration(border: OutlineInputBorder(), labelText: 'Id')),
             ),
+            SizedBox(height: 4),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+              child: TextField(
+                controller: lecciontitulo,
+                decoration: 
+                  InputDecoration(border: OutlineInputBorder(), labelText: 'Titulo')),
+            ),
+            SizedBox(height: 4),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+              child: TextField(
+                controller: lecciondescripcion,
+                decoration: 
+                  InputDecoration(border: OutlineInputBorder(), labelText: 'Descripcion')),
+            ),
             SizedBox(height: 10),
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               alignment: Alignment.center,
               child: ElevatedButton(
                 onPressed: (){
-                  print('El Boton Funciona');
+                  InsertarLeccionService().InsertarLeccion();
                 },
                 child: Text(
-                  'Eliminar',
+                  'Añadir',
                   style: TextStyle(
                     fontSize: 18,
                     fontFamily: 'rbold'
@@ -61,7 +81,6 @@ class LeccionesDeleteContentResponsive extends StatelessWidget {
     );
   }
 }
-
 
 class LessonContent extends StatelessWidget {
   const LessonContent({Key? key}) : super(key: key);

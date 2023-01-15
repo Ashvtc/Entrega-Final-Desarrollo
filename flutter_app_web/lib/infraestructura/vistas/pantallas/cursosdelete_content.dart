@@ -1,8 +1,10 @@
 import 'dart:html';
 import 'package:http/http.dart' as http;
 
-import 'package:flutter_app_web/src/widgets/responsive_widget.dart';
+import 'package:flutter_app_web/infraestructura/vistas/componentes/widgets/responsive_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../../../aplicacion/servicios/servicio_curso_delete.dart';
 
 class CursosDeleteContent extends ResponsiveWidget {
   const CursosDeleteContent({Key? key}) : super(key: key);
@@ -47,7 +49,7 @@ class CursosDeleteContentResponsive extends StatelessWidget {
               alignment: Alignment.center,
               child: ElevatedButton(
                 onPressed: (){
-                  print('El Boton Funciona');
+                  EliminarCursoService().EliminarCurso();
                 },
                 child: Text(
                   'Eliminar',
