@@ -40,8 +40,5 @@ class Contenido{
   String getUrl() {
     return url.getUrl();
   }
-
-  String getIdVideo() {
-    return idVideo.getId();
-  }
+  
 }
