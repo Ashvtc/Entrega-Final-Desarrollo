@@ -18,7 +18,8 @@ class _ItemLeccionesState extends State<ItemLecciones> {
             builder: (BuildContext context) {
               return const PantallaDetalleLeccion(
                   '[Leccion]',
-                  '[Descripcion de la leccion]');
+                  '[Descripcion de la leccion]',
+                  'https://www.youtube.com/watch?v=rPYMbhR-8RU');
             },
           ),
         );

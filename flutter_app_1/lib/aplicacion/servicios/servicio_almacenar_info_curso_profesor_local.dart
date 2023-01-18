@@ -7,7 +7,7 @@ import '../../infraestructura/data/Adaptador/i_repository_bd.dart';
 import '../../infraestructura/data/modelo_temporal/curso_temp.dart';
 
 class ServicioGuardarInfoCursoProfesorDB{
-  Future<void> execute(ParametroAdaptadorIterable<IRepositorioMoor, IterableLista<InfoCursoConProfesor>> parametro) async {
+  Future execute(ParametroAdaptadorIterable<IRepositorioMoor, IterableLista<InfoCursoConProfesor>> parametro) async {
     IRepositorioMoor adaptadorCursoProfesor = parametro.getAdaptador();
     IterableLista<InfoCursoConProfesor>? datos = parametro.getIterable();
     IteradorLista<InfoCursoConProfesor> iteradorDatos = datos.crearIterador();
