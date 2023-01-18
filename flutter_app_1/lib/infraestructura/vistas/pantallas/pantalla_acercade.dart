@@ -19,7 +19,7 @@ class _PantallaAcercaDeState extends State<PantallaAcercaDe> {
       body: SafeArea(
         child: ListView(
           children: <Widget>[
-            body(context),                  //Contenedor azul superior donde se da la bienvenida a la plataforma
+            body(context),                  
             nuestroEquipo(context),       
           ],
         ),
@@ -33,15 +33,15 @@ Widget body(context) {
   return Column(
     children: <Widget>[
       SizedBox(
-        height: size.height * 0.2,
+        height: size.height * 0.1,
         child: Stack(
           children: <Widget>[
             Container(
               padding:
                   const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-              height: size.height * 0.2 - 27,
+              height: size.height - 30,
               decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 136, 156, 173),
+                  color: Color(0xFF2196F3),
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(36),
                     bottomRight: Radius.circular(36),
@@ -66,22 +66,26 @@ Widget body(context) {
 
 Widget nuestroEquipo(context) {
   return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: <Widget>[
-      Padding(
-        padding: const EdgeInsets.only(
-            left: 30.0, right: 30.0, top: 5.0, bottom: 5.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            Text(
-              'Nuestro Equipo',
-              style: Theme.of(context).textTheme.bodyText1,
+    children: const [
+            Image(
+              image: NetworkImage(
+                  'https://static.vecteezy.com/system/resources/thumbnails/009/779/831/small/teamwork-collaboration-fellowship-partnership-team-building-and-cooperation-technology-business-partners-colleagues-cartoon-characters-illustration-vector.jpg'
+              ),
             ),
-          ],
-        ),
-      )
-    ],
+            Text(
+              'Sobre nosotros',
+              style: TextStyle(
+                fontSize: 25,
+              ),
+            ),
+            Text(
+              'Somos el equipo Titans, conformado por:',
+              style: TextStyle(
+                fontSize: 18,
+                color: Color.fromARGB(255, 83, 85, 90),
+              ),
+              textAlign: TextAlign.center,
+            )
+      ],
   );
 }
