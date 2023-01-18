@@ -36,7 +36,7 @@ widgetOnTap(String idCurso, String titulo, String profesor, String descripcion,
           MaterialPageRoute(
             builder: (BuildContext context) {
               return PantallaDetalleCurso(
-                  titulo, descripcion, profesor, logoCurso);
+                  idCurso: idCurso, tituloCurso: titulo, descripcionCurso: descripcion, profesor: profesor, logoCurso: logoCurso);
             },
           ),
         )

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_pantalla_1/dominio/agregados/curso/id_curso.dart';
 import 'package:flutter_pantalla_1/infraestructura/vistas/pantallas/pantalla_leccion_detallada.dart';
 
 class ItemLecciones extends StatefulWidget {
-  const ItemLecciones({Key? key}) : super(key: key);
+  final IdCurso idCurso;
+  const ItemLecciones({required this.idCurso, Key? key}) : super(key: key);
 
   @override
   State<ItemLecciones> createState() => _ItemLeccionesState();
@@ -16,20 +18,20 @@ class _ItemLeccionesState extends State<ItemLecciones> {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (BuildContext context) {
-              return const PantallaDetalleLeccion(
-                  '[Leccion]',
+              return PantallaDetalleLeccion(
+                  '[Leccion] ${widget.idCurso.getId()}',
                   '[Descripcion de la leccion]',
                   'https://www.youtube.com/watch?v=rPYMbhR-8RU');
             },
           ),
         );
       },
-      child: itemLeccionDetalle(context),
+      child: itemLeccionDetalle(context, widget.idCurso),
     );
   }
 }
 
-Widget itemLeccionDetalle(BuildContext context) {
+Widget itemLeccionDetalle(BuildContext context, IdCurso idCurso) {
   return Padding(
     padding: const EdgeInsets.only(right: 25.0, bottom: 20.0, top: 20.0),
     child: Container(
@@ -44,7 +46,7 @@ Widget itemLeccionDetalle(BuildContext context) {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
             ),
-            infoLeccion(context),
+            infoLeccion(context, idCurso),
           ],
         ),
       ),
@@ -67,12 +69,12 @@ BoxDecoration boxDecoration(context) {
   );
 }
 
-Widget infoLeccion(context) {
+Widget infoLeccion(context, IdCurso idCurso) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
       Text(
-        'Lección',
+        'Lección ${idCurso.getId()}',
         style: Theme.of(context).textTheme.headline3,
       ),
       const SizedBox(height: 3.0),
