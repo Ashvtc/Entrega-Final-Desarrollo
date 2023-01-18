@@ -11,7 +11,6 @@ class Contenido{
   Duracion duracion;
   TituloLeccion titulo;
   VideoUrl url;
-  IdVideo idVideo;
 
 
   Contenido({
@@ -20,7 +19,6 @@ class Contenido{
     required this.duracion,
     required this.titulo,
     required this.url,
-    required this.idVideo
 });
 
   String getIdLeccion() {
