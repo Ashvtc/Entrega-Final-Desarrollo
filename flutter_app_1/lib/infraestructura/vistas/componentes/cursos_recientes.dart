@@ -25,7 +25,7 @@ class CarouselCursosRecientes extends StatefulWidget {
 
 class _CarouselCursosRecientesState extends State<CarouselCursosRecientes> {
   ServicioObtenerInfoCursoProfesorMejorado servicio = ServicioObtenerInfoCursoProfesorMejorado();
-  ServicioGuardarInfoCursoProfesorDBMejorado servicioGuardarLocal = ServicioGuardarInfoCursoProfesorDBMejorado();
+  ServicioGuardarInfoCursoProfesorDB servicioGuardarLocal = ServicioGuardarInfoCursoProfesorDB();
   IterableLista<InfoCursoConProfesor>? iterableCursos;
   IteradorLista<InfoCursoConProfesor>? iteradorCursos;
   int elementosIterador = 0;

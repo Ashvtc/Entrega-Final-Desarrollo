@@ -3,7 +3,7 @@ import 'package:flutter_pantalla_1/dominio/agregados/leccion/leccion.dart';
 import 'package:flutter_pantalla_1/dominio/repositorios/i_repositorio_leccion.dart';
 import 'package:flutter_pantalla_1/modelos/patron_iterador/iterado_generico/iterable_lista.dart';
 
-class ServicioInfoLeccionDelCurso {
+class ServicioObtenerInfoLeccionDelCurso {
   Future<IterableLista<Leccion>> getLeccionesDelCurso(IRepositorioLeccion adaptadorLeccion, IdCurso idCurso) async{
     IterableLista<Leccion> leccionesIterable = IterableLista();
     List<Leccion>? lecciones;
