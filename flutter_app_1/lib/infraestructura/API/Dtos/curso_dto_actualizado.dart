@@ -11,6 +11,7 @@ class CursoDtoActualizado {
     required this.descripcion,
     required this.foto,
     required this.id,
+    required this.estado,
   });
 
   String titulo;
@@ -18,21 +19,24 @@ class CursoDtoActualizado {
   String descripcion;
   String foto;
   String id;
+  String estado;
 
   factory CursoDtoActualizado.fromJson(Map<String, dynamic> json) => CursoDtoActualizado(
     titulo: json["title"],
-    prof: json["Prof"], //Falta que me muestren como se va a llamar esto
+    prof: json["professorName"],
     descripcion: json["description"],
-    foto: json["image"],
-    id: json["courseId"],
+    foto: json["imagen"],
+    id: json["id"],
+    estado: json['state'],
   );
 
   Map<String, dynamic> toJson() => {
     "title": titulo,
-    "Prof": prof,
+    "professorName": prof,
     "description": descripcion,
-    "image": foto,
-    "courseId": id,
+    "imagen": foto,
+    "id": id,
+    "state": estado,
   };
 }
 
