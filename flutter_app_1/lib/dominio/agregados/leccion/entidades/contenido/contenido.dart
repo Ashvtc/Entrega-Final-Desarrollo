@@ -1,6 +1,5 @@
 import 'package:flutter_pantalla_1/dominio/agregados/leccion/entidades/contenido/duracion_contenido.dart';
 import 'package:flutter_pantalla_1/dominio/agregados/leccion/entidades/contenido/id_contenido.dart';
-import 'package:flutter_pantalla_1/dominio/agregados/leccion/entidades/contenido/id_video.dart';
 import 'package:flutter_pantalla_1/dominio/agregados/leccion/entidades/contenido/videoUrl_contenido.dart';
 import 'package:flutter_pantalla_1/dominio/agregados/leccion/id_leccion.dart';
 import 'package:flutter_pantalla_1/dominio/agregados/leccion/titulo_leccion.dart';
@@ -40,5 +39,5 @@ class Contenido{
   String getUrl() {
     return url.getUrl();
   }
-  
+
 }
