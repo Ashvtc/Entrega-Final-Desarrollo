@@ -17,7 +17,7 @@ class ApiJsonRepositoryLeccionYContenido implements IRepositorioLeccionContenido
     List<Leccion> leccionesAgg = [];
     for (int cont = 0; cont < lecciones!.length; cont++) {
       Contenido video = crearContenido(
-          cont.toString(), lecciones[cont].id, lecciones[cont].contenido)
+          cont.toString(), lecciones[cont].id, lecciones[cont].contenido);
       leccionesAgg.add(
           fabricaLeccion.reconstruirLeccion(
               lecciones[cont].id,

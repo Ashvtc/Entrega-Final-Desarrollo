@@ -15,7 +15,7 @@ class ApiJsonRepository implements IRepositorioCursoProfesor {
     for (int cont = 0; cont < cursos!.length; cont++) {
       //Profesor profe = fabricaProfesor.reconstruirProfesor(
       //    cont.toString(), cursos[cont].prof);
-      Profesor profe = crearProf(cont.toString(), cursos[cont].prof;
+      Profesor profe = crearProf(cont.toString(), cursos[cont].prof);
       cursosAgg.add(
         fabricaCurso.reconstruirCurso(
           cursos[cont].id,
