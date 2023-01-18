@@ -3,6 +3,7 @@ import 'package:flutter_pantalla_1/dominio/fabricas/Fabrica_Contenido.dart';
 import 'package:flutter_pantalla_1/dominio/fabricas/fabrica_leccion.dart';
 
 import 'package:flutter_pantalla_1/dominio/repositorios/i_repositorio_leccion_contenido.dart';
+import 'package:flutter_pantalla_1/infraestructura/API/api_nueva.dart';
 
 import '../../dominio/agregados/leccion/leccion.dart';
 import '../API/Dtos/contenido_dto.dart';
@@ -52,14 +53,14 @@ class ApiJsonRepositoryLeccionYContenido implements IRepositorioLeccionContenido
 
   @override
   Future<List<Leccion>>? getLecciones() async {
-    List<LeccionDtoNuevo>? lecciones = await /* aqui va el nombre del nuevo adaptador de la api q aun no esta listo*/ ;
+    List<LeccionDtoNuevo>? lecciones = await Api_Nueva().getLecciones();
     List <Leccion>? leccionesAgg = traducirLecciones(lecciones);
     return leccionesAgg;
   }
 
   @override
   Future<List<Contenido>>? getContenidos() async {
-    List<LeccionDtoNuevo>? contenidos = await /* aqui va el nombre del nuevo adaptador de la api q aun no esta listo*/ ;
+    List<LeccionDtoNuevo>? contenidos = await Api_Nueva().getLecciones();
     List <Contenido>? contenidosAgg = traducirContenidos(contenidos);
     return contenidosAgg;
   }

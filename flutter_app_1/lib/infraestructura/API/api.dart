@@ -1,4 +1,4 @@
-import 'dart:math';
+import 'dart:developer';
 import '../API/Dtos/curso_dto.dart';
 import '../API/iapi.dart';
 import 'package:http/http.dart' as http;
@@ -16,7 +16,7 @@ class Api extends IAPI {
       }
     } catch (e) {
       var a = e.toString();
-      log(int.parse(a));
+      log(a);
     }
     return null;
   }
@@ -33,7 +33,7 @@ class Api extends IAPI {
       }
     } catch (e) {
       var a = e.toString();
-      log(int.parse(a));
+      log(a);
     }
     return null;
   }

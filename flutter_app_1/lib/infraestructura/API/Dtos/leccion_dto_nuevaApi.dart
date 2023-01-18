@@ -1,4 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter_pantalla_1/infraestructura/API/Dtos/contenido_dto.dart';
+
+List<LeccionDtoNuevo> leccionDtoFromJson(String str) => List<LeccionDtoNuevo>.from(json.decode(str).map((x) => LeccionDtoNuevo.fromJson(x)));
+
+String leccionDtoToJson(List<LeccionDtoNuevo> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class LeccionDtoNuevo {
   LeccionDtoNuevo({
