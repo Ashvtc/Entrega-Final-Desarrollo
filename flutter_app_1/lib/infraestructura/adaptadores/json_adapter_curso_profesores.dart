@@ -13,8 +13,9 @@ class ApiJsonRepository implements IRepositorioCursoProfesor {
   List<Curso> traducirCursos(List<CursoDto>? cursos) {
     List<Curso> cursosAgg = [];
     for (int cont = 0; cont < cursos!.length; cont++) {
-      Profesor profe = fabricaProfesor.reconstruirProfesor(
-          cont.toString(), cursos[cont].prof);
+      //Profesor profe = fabricaProfesor.reconstruirProfesor(
+      //    cont.toString(), cursos[cont].prof);
+      Profesor profe = crearProf(cont.toString(), cursos[cont].prof;
       cursosAgg.add(
         fabricaCurso.reconstruirCurso(
           cursos[cont].id,
@@ -22,7 +23,7 @@ class ApiJsonRepository implements IRepositorioCursoProfesor {
           cursos[cont].titulo,
           cursos[cont].descripcion,
           profe.getId(),
-        ),
+        )
       );
     }
     return cursosAgg;
@@ -31,11 +32,15 @@ class ApiJsonRepository implements IRepositorioCursoProfesor {
   List<Profesor> traducirProfesores(List<CursoDto>? cursos) {
     List<Profesor> profesoresAgg = [];
     for (int cont = 0; cont < cursos!.length; cont++) {
-      Profesor profe = fabricaProfesor.reconstruirProfesor(
-          cont.toString(), cursos[cont].prof);
-      profesoresAgg.add(profe);
+     // Profesor profe = fabricaProfesor.reconstruirProfesor(
+     //     cont.toString(), cursos[cont].prof);
+      profesoresAgg.add(crearProf(cont.toString(), cursos[cont].prof));
     }
     return profesoresAgg;
+  }
+
+  Profesor crearProf(String id, String nombre){
+    return fabricaProfesor.reconstruirProfesor(id, nombre);
   }
 
   @override
