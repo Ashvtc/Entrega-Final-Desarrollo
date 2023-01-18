@@ -20,9 +20,8 @@ class ServicioObtenerInfoCursoProfesorMejorado implements IService<IterableLista
     List<Profesor>? profesores;
     IterableLista<InfoCursoConProfesor> iterable = IterableLista();
 
-    await adaptadorCursoProfesor.getData();
-    cursos = adaptadorCursoProfesor.getCursos();
-    profesores = adaptadorCursoProfesor.getProfesores();
+    cursos = await adaptadorCursoProfesor.getCursos();
+    profesores = await adaptadorCursoProfesor.getProfesores();
 
     for (int cont = 0; cont < cursos!.length; cont++) {
       iterable.add(

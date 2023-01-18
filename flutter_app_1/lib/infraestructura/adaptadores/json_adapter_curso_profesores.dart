@@ -9,42 +9,46 @@ import '../../dominio/repositorios/i_repositorio_curso_profesor.dart';
 class ApiJsonRepository implements IRepositorioCursoProfesor {
   FabricaCurso fabricaCurso = FabricaCurso();
   FabricaProfesor fabricaProfesor = FabricaProfesor();
-  List<Profesor>? profesoresAgg;
-  List<Curso>? cursosAgg;
-  List<CursoDto>? cursos;
 
-  @override
-  Future getData() async {
-    cursos = await Api().getCursos();
-    fabrica();
-  }
-
-  void fabrica() {
-    cursosAgg = [];
-    profesoresAgg = [];
+  List<Curso> traducirCursos(List<CursoDto>? cursos) {
+    List<Curso> cursosAgg = [];
     for (int cont = 0; cont < cursos!.length; cont++) {
       Profesor profe = fabricaProfesor.reconstruirProfesor(
-          cont.toString(), cursos![cont].prof);
-      profesoresAgg!.add(profe);
-      cursosAgg!.add(
+          cont.toString(), cursos[cont].prof);
+      cursosAgg.add(
         fabricaCurso.reconstruirCurso(
-          cursos![cont].id,
-          cursos![cont].foto,
-          cursos![cont].titulo,
-          cursos![cont].descripcion,
-          profe.id.getId(),
+          cursos[cont].id,
+          cursos[cont].foto,
+          cursos[cont].titulo,
+          cursos[cont].descripcion,
+          profe.getId(),
         ),
       );
     }
+    return cursosAgg;
+  }
+
+  List<Profesor> traducirProfesores(List<CursoDto>? cursos) {
+    List<Profesor> profesoresAgg = [];
+    for (int cont = 0; cont < cursos!.length; cont++) {
+      Profesor profe = fabricaProfesor.reconstruirProfesor(
+          cont.toString(), cursos[cont].prof);
+      profesoresAgg.add(profe);
+    }
+    return profesoresAgg;
   }
 
   @override
-  List<Curso>? getCursos() {
+  Future<List<Curso>>? getCursos() async {
+    List<CursoDto>? cursos = await Api().getCursos();
+    List<Curso>? cursosAgg = traducirCursos(cursos);
     return cursosAgg;
   }
 
   @override
-  List<Profesor>? getProfesores() {
+  Future<List<Profesor>>? getProfesores() async {
+    List<CursoDto>? cursos = await Api().getCursos();
+    List<Profesor>? profesoresAgg = traducirProfesores(cursos);
     return profesoresAgg;
   }
 }
