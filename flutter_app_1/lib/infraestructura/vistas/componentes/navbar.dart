@@ -47,7 +47,7 @@ class NavBar extends StatelessWidget {
           const ListTile(
             leading: Icon(Icons.info),
             title: Text(
-              'Acerca de...',
+              'Acerca de ...',
               style: TextStyle(
                 fontSize: 18,
               ),
