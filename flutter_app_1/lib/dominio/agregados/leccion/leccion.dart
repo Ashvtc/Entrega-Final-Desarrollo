@@ -1,5 +1,4 @@
 import 'package:flutter_pantalla_1/dominio/agregados/curso/id_curso.dart';
-import 'package:flutter_pantalla_1/dominio/agregados/leccion/comentario_leccion.dart';
 import 'package:flutter_pantalla_1/dominio/agregados/leccion/descripcion_leccion.dart';
 import 'package:flutter_pantalla_1/dominio/agregados/leccion/id_leccion.dart';
 import 'package:flutter_pantalla_1/dominio/agregados/leccion/titulo_leccion.dart';
@@ -10,7 +9,6 @@ class Leccion {
   IdCurso idCurso;
   TituloLeccion tituloLeccion;
   DescripcionLeccion descripcionLeccion;
-  ComentariosLeccion comentarios;
   IdContenido contenido;
 
   Leccion({
@@ -18,7 +16,6 @@ class Leccion {
     required this.idCurso,
     required this.tituloLeccion,
     required this.descripcionLeccion,
-    required this.comentarios,
     required this.contenido
   });
 
@@ -36,10 +33,6 @@ class Leccion {
 
   String getDescripcionLeccion() {
     return descripcionLeccion.getDescripcion();
-  }
-
-  ComentariosLeccion getComentarios(){
-    return comentarios;
   }
 
   IdContenido getContenido(){

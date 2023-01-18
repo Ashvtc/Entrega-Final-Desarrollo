@@ -35,6 +35,7 @@ class MoorUsuario extends Table{
   IntColumn get idProf => integer()();
   TextColumn get nombreProf => text()();
 }
+/*
 //Los 2 nuevos Objetos
 class MoorComentario extends Table{
   IntColumn get BDid => integer().autoIncrement()();
@@ -42,7 +43,7 @@ class MoorComentario extends Table{
   TextColumn get usuario => text()();
   TextColumn get texto => text()();
   IntColumn get idLeccion => integer()(); //Aqui debe haber una FK
-}
+}*/
 
 class MoorContenido extends Table{
   IntColumn get BDid => integer().autoIncrement()();
@@ -122,7 +123,7 @@ class UsuarioDao extends DatabaseAccessor<CorsiDataBase> with _$UsuarioDaoMixin 
 
 //Future deleteUsuario(int id) => Future.value((delete(moorUsuario)..where((tbl) => tbl.idProf.equals(id))).go());
 }
-
+/*
 @useDao(tables: [MoorComentario])
 class ComentarioDao extends DatabaseAccessor<CorsiDataBase> with _$ComentarioDaoMixin{
   final CorsiDataBase db;
@@ -133,7 +134,7 @@ class ComentarioDao extends DatabaseAccessor<CorsiDataBase> with _$ComentarioDao
   Future<List<MoorComentarioData>> buscarComentarioPorId(int id) => (select(moorComentario)..where((tbl) => tbl.idComentario.equals(id))).get();
 
   Future<int> insertarComentario(Insertable<MoorComentarioData> comentario) => into(moorComentario).insert(comentario);
-}
+}*/
 
 @useDao(tables: [MoorContenido])
 class ContenidoDao extends DatabaseAccessor<CorsiDataBase> with _$ContenidoDaoMixin{
@@ -203,7 +204,7 @@ Insertable<MoorUsuarioData> usuarioToInsertableMoorUsuario (UsuarioTemp usuario)
     nombreProf: usuario.nombre ?? '',
   );
 }
-
+/*
 ComentarioTemp moorComentarioToComentario (MoorComentarioData comentario){
   return ComentarioTemp (
     BDid : comentario.BDid,
@@ -221,7 +222,7 @@ Insertable<MoorComentarioData> comentarioToInsertableMoorComentario (ComentarioT
     texto : comentario.texto ?? '',
     idLeccion : comentario.idLeccion ?? 0,
   )
-}
+}*/
 
 ContenidoTemp moorContenidoToContenido (MoorContenidoData contenido){
   return ContenidoTemp (
