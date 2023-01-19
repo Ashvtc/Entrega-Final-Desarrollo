@@ -20,6 +20,8 @@ class ServicioObtenerInfoCursoProfesorMejorado implements IService<IterableLista
     List<Profesor>? profesores;
     IterableLista<InfoCursoConProfesor> iterable = IterableLista();
 
+
+
     cursos = await adaptadorCursoProfesor.getCursos();
     profesores = await adaptadorCursoProfesor.getProfesores();
 
@@ -33,8 +35,9 @@ class ServicioObtenerInfoCursoProfesorMejorado implements IService<IterableLista
           logoCurso: LogoCurso(urlLogo: cursos[cont].getLogo()),
           idProfesor: IdProfesor(id: profesores![cont].getId()),
           nombreProfesor: NombreProfesor(
-            nombre: profesores[cont].getNombre(),
-          ),
+            nombre: profesores[cont].getNombre()),
+          lecciones: cursos[cont].lecciones,
+          estado: cursos[cont].estado,
         ),
       );
     }

@@ -16,17 +16,17 @@ class ApiJsonRepositoryLeccionYContenido implements IRepositorioLeccionContenido
 
   List<Leccion> traducirLecciones(List<LeccionDtoNuevo>? lecciones) {
     List<Leccion> leccionesAgg = [];
-    for (int cont = 0; cont < lecciones!.length; cont++) {
-      Contenido video = crearContenido(
-          cont.toString(), lecciones[cont].id, lecciones[cont].contenido);
-      leccionesAgg.add(
-          fabricaLeccion.reconstruirLeccion(
-              lecciones[cont].id,
-              lecciones[cont].cursoId,
-              lecciones[cont].titulo,
-              lecciones[cont].descripcion,
-              video.getIdContenido())
-      );
+    if (lecciones != null) {
+      for (int cont = 0; cont < lecciones!.length; cont++) {
+        Contenido video = crearContenido(cont.toString(),
+            lecciones[cont].id.toString(), lecciones[cont].contenido);
+        leccionesAgg.add(fabricaLeccion.reconstruirLeccion(
+            lecciones[cont].id.toString(),
+            lecciones[cont].cursoId,
+            lecciones[cont].titulo,
+            lecciones[cont].descripcion,
+            video.getIdContenido()));
+      }
     }
     return leccionesAgg;
   }
@@ -35,7 +35,7 @@ class ApiJsonRepositoryLeccionYContenido implements IRepositorioLeccionContenido
     List<Contenido> contenidoAgg = [];
     for (int cont = 0; cont < lecciones!.length; cont++) {
       contenidoAgg.add(crearContenido(cont.toString(),
-          lecciones[cont].id,
+          lecciones[cont].id.toString(),
           lecciones[cont].contenido));
     }
     return contenidoAgg;
@@ -52,15 +52,15 @@ class ApiJsonRepositoryLeccionYContenido implements IRepositorioLeccionContenido
   }
 
   @override
-  Future<List<Leccion>>? getLecciones() async {
-    List<LeccionDtoNuevo>? lecciones = await Api_Nueva().getLecciones();
+  Future<List<Leccion>>? getLecciones(String id) async {
+    List<LeccionDtoNuevo>? lecciones = await Api_Nueva().getLecciones(id);
     List <Leccion>? leccionesAgg = traducirLecciones(lecciones);
     return leccionesAgg;
   }
 
   @override
-  Future<List<Contenido>>? getContenidos() async {
-    List<LeccionDtoNuevo>? contenidos = await Api_Nueva().getLecciones();
+  Future<List<Contenido>>? getContenidos(String id) async {
+    List<LeccionDtoNuevo>? contenidos = await Api_Nueva().getLecciones(id);
     List <Contenido>? contenidosAgg = traducirContenidos(contenidos);
     return contenidosAgg;
   }

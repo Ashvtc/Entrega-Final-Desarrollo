@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-List<CursoDtoActualizado> cursoDtoFromJson(String str) => List<CursoDtoActualizado>.from(json.decode(str).map((x) => CursoDtoActualizado.fromJson(x)));
+List<CursoDtoActualizado> cursoDtoActualizadoFromJson(String str) => List<CursoDtoActualizado>.from(json.decode(str).map((x) => CursoDtoActualizado.fromJson(x)));
 
 String cursoDtoToJson(List<CursoDtoActualizado> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
@@ -18,25 +18,25 @@ class CursoDtoActualizado {
   String prof;
   String descripcion;
   String foto;
-  String id;
+  int id;
   String estado;
 
   factory CursoDtoActualizado.fromJson(Map<String, dynamic> json) => CursoDtoActualizado(
-    titulo: json["title"],
-    prof: json["professorName"],
-    descripcion: json["description"],
-    foto: json["imagen"],
     id: json["id"],
+    titulo: json["title"],
+    foto: json["imagen"],
+    descripcion: json["description"],
     estado: json['state'],
+    prof: json["professorName"],
   );
 
   Map<String, dynamic> toJson() => {
-    "title": titulo,
-    "professorName": prof,
-    "description": descripcion,
-    "imagen": foto,
     "id": id,
+    "title": titulo,
+    "imagen": foto,
+    "description": descripcion,
     "state": estado,
+    "professorName": prof,
   };
 }
 

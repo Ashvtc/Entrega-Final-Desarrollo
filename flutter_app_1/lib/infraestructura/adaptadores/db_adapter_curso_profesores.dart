@@ -1,3 +1,5 @@
+import 'package:flutter_pantalla_1/dominio/agregados/curso/lecciones_curso.dart';
+import 'package:flutter_pantalla_1/dominio/agregados/leccion/id_leccion.dart';
 import 'package:flutter_pantalla_1/infraestructura/data/modelo_temporal/usuario_temp.dart';
 import 'package:flutter_pantalla_1/infraestructura/data/modelo_temporal/curso_temp.dart';
 import '../../infraestructura/data/Adaptador/adaptador_moor.dart';
@@ -14,6 +16,9 @@ class ApiBDRepository extends IRepositorioCursoProfesor {
 
   List<Curso> traducirCursos(List<CursoTemp>? cursos) {
     List<Curso> cursosAgg = [];
+    List<IdLeccion> test = [];
+    test.add(('1') as IdLeccion);
+    test.add(('2') as IdLeccion);
     for (int cont = 0; cont < cursos!.length; cont++) {
       cursosAgg.add(
         fabricaCurso.reconstruirCurso(
@@ -22,6 +27,9 @@ class ApiBDRepository extends IRepositorioCursoProfesor {
           cursos[cont].titulo,
           cursos[cont].descripcion,
           cursos[cont].idProf.toString(),
+          test,
+          'estdo',
+
         ),
       );
     }

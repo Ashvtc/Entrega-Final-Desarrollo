@@ -1,5 +1,7 @@
 import 'dart:core';
 
+import '../../../dominio/agregados/curso/lecciones_curso.dart';
+import '../../../dominio/agregados/leccion/id_leccion.dart';
 import '../Adaptador/i_repository_bd.dart';
 import 'package:flutter_pantalla_1/infraestructura/data/modelo_temporal/usuario_temp.dart';
 import 'package:flutter_pantalla_1/infraestructura/data/modelo_temporal/curso_temp.dart';
@@ -122,13 +124,20 @@ class AdaptadorMoor implements IRepositorioMoor {
       profesoresAgg?.add(profesor);
     }
     ;
+    List<IdLeccion> test = [];
+    test.add(('1') as IdLeccion);
+    test.add(('2') as IdLeccion);
     for (int i = 0; i < cursosBD.length; i++) {
       Curso curso = fabricaCurso.reconstruirCurso(
           cursosBD[i].idCurso.toString(),
           cursosBD[i].logo,
           cursosBD[i].titulo,
           cursosBD[i].descripcion,
-          cursosBD[i].idProf.toString());
+          cursosBD[i].idProf.toString(),
+          test,
+          'estdo',
+      );
+
       cursosAgg?.add(curso);
     }
   }

@@ -7,7 +7,7 @@ class Urls {
   static String cursoEspecificoEndPoint = '/FlutterCurso/$idRequeridoCurso';
   static String leccionesDeUnCursoEndPoint = '/FlutterCurso/$idRequeridoCurso/Leccion';
   static String leccionEspecificaDeUnCursoEndPoint = '/FlutterCurso/$idRequeridoCurso/Leccion/$idRequeridoLeccion';
-  static String urlFinal = '';
+  static String urlFinal = 'http://10.0.2.2:3000';
   static String cursosFinalEndpoint = '/courses';
   static String leccionesFinalEndpoint = '/lesson';
 }

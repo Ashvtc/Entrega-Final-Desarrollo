@@ -14,29 +14,33 @@ class Api_Nueva extends IAPINueva{
       var url = Uri.parse(Urls.urlFinal + Urls.cursosFinalEndpoint);
       var response = await http.get(url);
       if (response.statusCode == 200) {
-        List<CursoDtoActualizado> cursos = cursoDtoFromJson(response.body);
+        List<CursoDtoActualizado> cursos = cursoDtoActualizadoFromJson(response.body);
         return cursos;
       }
     }catch(e){
       var a = e.toString();
       log(a);
+      return null;
     }
-    return null;
+
   }
 
   @override
-  Future<List<LeccionDtoNuevo>?> getLecciones() async{
+  Future<List<LeccionDtoNuevo>?> getLecciones(String id) async{
     try{
-      var url = Uri.parse(Urls.urlFinal + Urls.leccionesFinalEndpoint);
+      var url = Uri.parse(Urls.urlFinal + Urls.leccionesFinalEndpoint + '/' + id);
+      print(url);
       var response = await http.get(url);
       if (response.statusCode == 200) {
+        print('curso' + id);
         List<LeccionDtoNuevo> lecciones = leccionDtoFromJson(response.body);
         return lecciones;
       }
     }catch(e){
       var a = e.toString();
       log(a);
+      return null;
     }
-    return null;
+
   }
 }

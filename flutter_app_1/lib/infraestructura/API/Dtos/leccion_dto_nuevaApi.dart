@@ -17,7 +17,7 @@ class LeccionDtoNuevo {
 
   String titulo;
   String descripcion;
-  String id;
+  int id;
   String cursoId;
   ContenidoDto contenido;
 
