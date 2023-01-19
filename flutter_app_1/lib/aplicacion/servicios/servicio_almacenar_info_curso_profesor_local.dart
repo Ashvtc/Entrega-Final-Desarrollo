@@ -1,4 +1,6 @@
 import 'package:flutter_pantalla_1/aplicacion/parameter_objects/parametro_adaptador_iterable.dart';
+import 'package:flutter_pantalla_1/dominio/agregados/curso/lecciones_curso.dart';
+import 'package:flutter_pantalla_1/dominio/agregados/leccion/id_leccion.dart';
 import 'package:flutter_pantalla_1/infraestructura/data/modelo_temporal/usuario_temp.dart';
 import '../../dominio/parameters_objects/info_curso_con_profesor.dart';
 import '../../modelos/patron_iterador/iterado_generico/iterable_lista.dart';

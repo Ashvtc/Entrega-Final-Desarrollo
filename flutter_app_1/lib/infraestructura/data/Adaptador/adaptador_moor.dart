@@ -10,6 +10,7 @@ import 'package:flutter_pantalla_1/dominio/fabricas/fabrica_curso.dart';
 import 'package:flutter_pantalla_1/dominio/fabricas/fabrica_profesor.dart';
 import '../../../dominio/agregados/curso/curso.dart';
 import '../../../dominio/agregados/profesor/profesor.dart';
+import '../modelo_temporal/leccion_temporal.dart';
 
 /*
   Dataso para quien use este adapter xd
@@ -22,7 +23,7 @@ import '../../../dominio/agregados/profesor/profesor.dart';
 class AdaptadorMoor implements IRepositorioMoor {
   late CorsiDataBase corsiDataBase;
   late CursoDao cursoDao;
-  //late LeccionDao leccionDao;
+  late LeccionDao leccionDao;
   late UsuarioDao usuarioDao;
   List<Curso>? cursosAgg;
   List<Profesor>? profesoresAgg;
@@ -33,7 +34,7 @@ class AdaptadorMoor implements IRepositorioMoor {
   Future init() async {
     corsiDataBase = CorsiDataBase();
     cursoDao = corsiDataBase.cursoDao;
-    //leccionDao = corsiDataBase.leccionDao;
+    leccionDao = corsiDataBase.leccionDao;
     usuarioDao = corsiDataBase.usuarioDao;
   }
 
@@ -54,6 +55,22 @@ class AdaptadorMoor implements IRepositorioMoor {
           },
         );
         return cursos;
+      },
+    );
+  }
+
+  @override
+  Future<List<LeccionTemp>> getLeccionesBD() {
+    return leccionDao.obtenerTodasLasLecciones().then<List<LeccionTemp>>(
+          (List<MoorLeccionData> moorLecciones) {
+        final lecciones = <LeccionTemp>[];
+        moorLecciones.forEach(
+              (moorLecciones) async {
+            final leccion = moorLeccionToLeccion(moorLecciones);
+            lecciones.add(lecciones);
+          },
+        );
+        return lecciones;
       },
     );
   }

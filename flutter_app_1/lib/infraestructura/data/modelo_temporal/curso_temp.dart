@@ -1,4 +1,6 @@
 
+import 'package:flutter_pantalla_1/dominio/agregados/leccion/id_leccion.dart';
+
 class CursoTemp {
   int BDid;
   int idCurso;

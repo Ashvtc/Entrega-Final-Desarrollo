@@ -131,7 +131,8 @@ CursoTemp moorCursoToCurso(MoorCursoData curso) {
       logo: curso.logo,
       titulo: curso.titulo,
       descripcion: curso.descripcion,
-      idProf: curso.idProf, estado: ''
+      idProf: curso.idProf,
+      estado: ''
   );
 }
 

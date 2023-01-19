@@ -1,5 +1,6 @@
 import 'package:flutter_pantalla_1/dominio/agregados/curso/lecciones_curso.dart';
 import 'package:flutter_pantalla_1/dominio/agregados/leccion/id_leccion.dart';
+import 'package:flutter_pantalla_1/infraestructura/data/modelo_temporal/leccion_temporal.dart';
 import 'package:flutter_pantalla_1/infraestructura/data/modelo_temporal/usuario_temp.dart';
 import 'package:flutter_pantalla_1/infraestructura/data/modelo_temporal/curso_temp.dart';
 import '../../infraestructura/data/Adaptador/adaptador_moor.dart';
@@ -14,12 +15,15 @@ class ApiBDRepository extends IRepositorioCursoProfesor {
   FabricaProfesor fabricaProfesor = FabricaProfesor();
   AdaptadorMoor adaptadorMoor = AdaptadorMoor();
 
-  List<Curso> traducirCursos(List<CursoTemp>? cursos) {
+  List<Curso> traducirCursos(List<CursoTemp>? cursos, List<LeccionTemp> lecciones) {
     List<Curso> cursosAgg = [];
-    List<IdLeccion> test = [];
-    test.add(('1') as IdLeccion);
-    test.add(('2') as IdLeccion);
     for (int cont = 0; cont < cursos!.length; cont++) {
+      List<IdLeccion> ids = [];
+      for (int i =  0; i < lecciones!.length; i++){
+        if(lecciones[i].idCurso == cursos[cont].idCurso){
+          ids.add(lecciones[i].idLeccion.toString() as IdLeccion);
+        }
+      }
       cursosAgg.add(
         fabricaCurso.reconstruirCurso(
           cursos[cont].idCurso.toString(),
@@ -27,8 +31,8 @@ class ApiBDRepository extends IRepositorioCursoProfesor {
           cursos[cont].titulo,
           cursos[cont].descripcion,
           cursos[cont].idProf.toString(),
-          test,
-          'estdo',
+          ids,
+          cursos[cont].estado,
 
         ),
       );
@@ -50,7 +54,8 @@ class ApiBDRepository extends IRepositorioCursoProfesor {
   Future<List<Curso>> getCursos() async {
     adaptadorMoor.init();
     List<CursoTemp> cursos = await adaptadorMoor.getCursosBD();
-    List<Curso> cursosAgg = traducirCursos(cursos);
+    List<LeccionTemp> lecciones =  await adaptadorMoor.getLeccionesBD();
+    List<Curso> cursosAgg = traducirCursos(cursos, lecciones);
     adaptadorMoor.close();
     return cursosAgg;
   }
