@@ -49,7 +49,8 @@ class CursosDeleteContentResponsive extends StatelessWidget {
               alignment: Alignment.center,
               child: ElevatedButton(
                 onPressed: (){
-                  //EliminarCursoService().EliminarCurso();
+                  String cursoid2 = cursoid.toString();
+                  //EliminarCursoService().EliminarCurso(course: cursoid2);
                 },
                 child: Text(
                   'Eliminar',

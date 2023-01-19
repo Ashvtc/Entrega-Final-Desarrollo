@@ -45,7 +45,7 @@ class LeccionesDeleteContentResponsive extends StatelessWidget {
               alignment: Alignment.center,
               child: ElevatedButton(
                 onPressed: (){
-                  EliminarLeccionService().EliminarLeccion();
+                  //EliminarLeccionService().EliminarLeccion();
                 },
                 child: Text(
                   'Eliminar',

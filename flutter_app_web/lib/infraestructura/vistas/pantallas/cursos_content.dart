@@ -21,7 +21,6 @@ class CursosContentResponsive extends StatelessWidget {
 
   CursosContentResponsive(this.horizontalPadding);
 
-  final cursoid = TextEditingController();
   final cursostate = TextEditingController();
   final cursotitulo = TextEditingController();
   final cursologo = TextEditingController();
@@ -42,14 +41,6 @@ class CursosContentResponsive extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
             ),
             SizedBox(height: 24),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-              child: TextField(
-                controller: cursoid,
-                decoration: 
-                  InputDecoration(border: OutlineInputBorder(), labelText: 'ID')),
-            ),
-            SizedBox(height: 4),
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: TextField(
@@ -95,13 +86,12 @@ class CursosContentResponsive extends StatelessWidget {
               alignment: Alignment.center,
               child: ElevatedButton(
                 onPressed: () async {
-                  String cursoid2 = cursoid.toString();
                   String cursostate2 = cursostate.toString();
                   String cursotitulo2 = cursotitulo.toString();
                   String cursologo2 = cursologo.toString();
                   String cursoprofesor2 = cursoprofesor.toString();
                   String cursodescripcion2 = cursodescripcion.toString();
-                  InsertarCursoService().InsertarCurso(cursoid2, cursostate2, cursotitulo2, cursologo2, cursoprofesor2, cursodescripcion2);
+                  InsertarCursoService().InsertarCurso(cursostate2, cursotitulo2, cursologo2, cursoprofesor2, cursodescripcion2);
                 },
                 child: Text(
                   'Ingresar',

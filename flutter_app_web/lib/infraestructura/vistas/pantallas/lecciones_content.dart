@@ -18,7 +18,6 @@ class LeccionesContentResponsive extends StatelessWidget {
 
   LeccionesContentResponsive(this.horizontalPadding);
 
-  final leccionid = TextEditingController();
   final leccionidcurso = TextEditingController();
   final lecciontitulo = TextEditingController();
   final lecciondescripcion = TextEditingController();
@@ -39,14 +38,6 @@ class LeccionesContentResponsive extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
             ),
             SizedBox(height: 24),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-              child: TextField(
-                controller: leccionid,
-                decoration: 
-                  InputDecoration(border: OutlineInputBorder(), labelText: 'ID')),
-            ),
-            SizedBox(height: 4),
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: TextField(
@@ -116,7 +107,7 @@ class LeccionesContentResponsive extends StatelessWidget {
                     String leccionurlvideo2 = leccionurlvideo.toString();
                     String lecciontipovideo2 = lecciontipovideo.toString();
                     String leccionduracionvideo2 =leccionduracionvideo.toString();
-                  InsertarLeccionService().InsertarLeccion(leccionidcurso2, lecciontitulo2, lecciondescripcion2, lecciontitulovideo2, leccionurlvideo2, lecciontipovideo2, leccionduracionvideo2, leccionidcurso2);
+                  InsertarLeccionService().InsertarLeccion(lecciontitulo2, lecciondescripcion2, lecciontitulovideo2, leccionurlvideo2, lecciontipovideo2, leccionduracionvideo2, leccionidcurso2);
                 },
                 child: Text(
                   'Añadir',
