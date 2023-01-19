@@ -1,12 +1,14 @@
 import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_pantalla_1/aplicacion/parameter_objects/parametro_adaptador_iterable.dart';
 import 'package:flutter_pantalla_1/aplicacion/servicios/servicio_obtener_info_lecciones_del_curso.dart';
 import 'package:flutter_pantalla_1/dominio/agregados/curso/id_curso.dart';
 import 'package:flutter_pantalla_1/dominio/agregados/leccion/leccion.dart';
+import 'package:flutter_pantalla_1/infraestructura/adaptadores/json_adpter_leccion_contenido.dart';
 import 'package:flutter_pantalla_1/infraestructura/data/Adaptador/adaptador_moor.dart';
 import 'package:flutter_pantalla_1/modelos/patron_iterador/iterado_generico/iterable_lista.dart';
 import 'package:flutter_pantalla_1/modelos/patron_iterador/iterado_generico/iterador_lista.dart';
@@ -44,7 +46,7 @@ class _CarouselLeccionesState extends State<CarouselLecciones> {
   void initState() {
     subscription = Connectivity().onConnectivityChanged.listen((event) async {
       if (await verificarConexionInternet()) {
-        // await getApiData();
+        await getApiData();
         // await storeDataLocal();
       }
     });
@@ -57,13 +59,13 @@ class _CarouselLeccionesState extends State<CarouselLecciones> {
     super.dispose();
   }
 
-  // getApiData() async {
-  //   Result<IterableLista<Leccion>> resultado = await servicio.execute(/*Adaptador api*/, widget.idCurso);
-  //   if (resultado.satisfactorio()) {
-  //     iterableLecciones = resultado.valor;
-  //     prepareData();
-  //   }
-  // }
+  getApiData() async {
+    Result<IterableLista<Leccion>> resultado = await servicio.execute(ApiJsonRepositoryLeccionYContenido(), widget.idCurso);
+    if (resultado.satisfactorio()) {
+      iterableLecciones = resultado.valor;
+      prepareData();
+    }
+  }
 
   // getLocalStoreData() async {
   //   Result<IterableLista<Leccion>> resultado = await servicio.execute(/*Adaptador local */, widget.idCurso);
@@ -78,30 +80,48 @@ class _CarouselLeccionesState extends State<CarouselLecciones> {
   //   await servicioGuardarLocal.execute(parametro);
   // }
 
-  // prepareData() {
-  //   iteradorLecciones = iterableLecciones!.crearIterador();
-  //   elementosIterador = iterableLecciones!.cantidadElementos();
-  //   setState(() {
-  //     isLoaded = true;
-  //   });
-  // }
+  prepareData() {
+    iteradorLecciones = iterableLecciones!.crearIterador();
+    elementosIterador = iterableLecciones!.cantidadElementos();
+    setState(() {
+      isLoaded = true;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return CarouselSlider(
-      options: CarouselOptions(
-        enableInfiniteScroll: false,
-        reverse: false,
-        viewportFraction: 0.86,
-        height: 140.0,
+    return Visibility(
+      visible: isLoaded,
+      replacement: const Center(
+        heightFactor: 6,
+        child: CircularProgressIndicator(),
       ),
-      items: <Widget>[
-        //se elimina el widget y se agrega la lista de lecciones
-        ItemLecciones(idCurso: IdCurso(id: '1')),
-        ItemLecciones(idCurso: IdCurso(id: '2')),
-        ItemLecciones(idCurso: IdCurso(id: '3')),
-        ItemLecciones(idCurso: IdCurso(id: '4')),
-      ],
+      child: Center(
+        child: SizedBox(
+          height: 260,
+          child: ScrollConfiguration(
+            behavior: ScrollConfiguration.of(context).copyWith(
+              dragDevices: {
+                PointerDeviceKind.touch,
+                PointerDeviceKind.mouse,
+              },
+            ),
+            child: CarouselSlider.builder(
+              options: CarouselOptions(
+                enableInfiniteScroll: false,
+                reverse: false,
+                viewportFraction: 0.86,
+                height: 260.0,
+              ),
+              itemCount: elementosIterador, //cantidad de 'elementos'
+              itemBuilder: (context, index, realIndex) {
+                return itemLecciones(widget.idCurso,
+                    iteradorLecciones!.getElementoPorIndex(index), context);
+              },
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
