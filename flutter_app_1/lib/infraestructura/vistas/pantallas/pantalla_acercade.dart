@@ -51,7 +51,7 @@ Widget body(context) {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    'Acerca de ...',
+                    'Sobre nosotros',
                     style: Theme.of(context).textTheme.headline1,
                   ),
                 ],
@@ -66,26 +66,63 @@ Widget body(context) {
 
 Widget nuestroEquipo(context) {
   return Column(
-    children: const [
-            Image(
-              image: NetworkImage(
-                  'https://static.vecteezy.com/system/resources/thumbnails/009/779/831/small/teamwork-collaboration-fellowship-partnership-team-building-and-cooperation-technology-business-partners-colleagues-cartoon-characters-illustration-vector.jpg'
-              ),
-            ),
-            Text(
-              'Sobre nosotros',
-              style: TextStyle(
-                fontSize: 25,
-              ),
-            ),
-            Text(
+    children: [
+      Image.asset('assets/imgs/team.jpg', width: 350),
+      const Text(
               'Somos el equipo Titans, conformado por:',
               style: TextStyle(
                 fontSize: 18,
                 color: Color.fromARGB(255, 83, 85, 90),
               ),
               textAlign: TextAlign.center,
-            )
+            ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          datosPersona('assets/imgs/profilef.jpg', 'Ashly Colmenares', 'front-end'),
+          datosPersona('assets/imgs/profilem4.jpg', 'David Liendo', 'front-end'),
+          datosPersona('assets/imgs/profilem.jpg', 'Carlos Ortega', 'front-end'),
+        ],
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          datosPersona('assets/imgs/profilem3.jpg', 'Kleeders Ortiz', 'front-end'),
+          datosPersona('assets/imgs/profilem.jpg', 'Daniel Carvajal', 'back-end'),
+          datosPersona('assets/imgs/profilem2.jpg', 'Marcos Duque', 'back-end'),
+        ],
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          datosPersona('assets/imgs/profilem.jpg', 'William Gandino', 'back-end'),
+          datosPersona('assets/imgs/profilem2.jpg', 'Aitor Parrilla', 'back-end'),
+          datosPersona('assets/imgs/profilem4.jpg', 'Cesar Reyes', 'back-end'),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget datosPersona(imagenProfile, String nombre, String areaTrabajo ) {
+  return Padding(
+    padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+    child: Column(
+      children: [
+        Image.asset(imagenProfile, width: 60),
+        Text( nombre,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
+        Text(
+          areaTrabajo,
+          style: const TextStyle(
+            color: Colors.grey,
+          ),
+        ),
       ],
+    ),
   );
 }

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_pantalla_1/infraestructura/vistas/pantallas/pantalla_acercade.dart';
+import 'package:flutter_pantalla_1/infraestructura/vistas/pantallas/pantalla_cursos.dart';
+import 'package:flutter_pantalla_1/infraestructura/vistas/pantallas/pantalla_detalle_curso.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key});
@@ -15,6 +18,7 @@ class NavBar extends StatelessWidget {
               'Usuario',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
+                fontSize: 20,
                 color: Color.fromARGB(255, 0, 0, 0),
               ),
             ), 
@@ -26,8 +30,8 @@ class NavBar extends StatelessWidget {
             ),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
-                child: Image.network(
-                  'https://i.pinimg.com/564x/00/80/ee/0080eeaeaa2f2fba77af3e1efeade565.jpg',
+                child: Image.asset(
+                  'assets/imgs/profile.jpg',
                   width: 100,
                   height: 100,
                   fit: BoxFit.cover,
@@ -44,25 +48,60 @@ class NavBar extends StatelessWidget {
               ),
             ),
           ),
-          const ListTile(
-            leading: Icon(Icons.info),
-            title: Text(
-              'Acerca de ...',
-              style: TextStyle(
-                fontSize: 18,
+          Row(
+            children: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context, 
+                      MaterialPageRoute(builder: (context) => const PantallaCursos())
+                    );
+                  },
+                  icon: const Icon(Icons.home),
               ),
-            ),
-            onTap: null,
+              const Text(
+                  'Página Principal',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
+              ),
+            ],
           ),
-          const ListTile(
-            leading: Icon(Icons.dark_mode),
-            title: Text(
-              'Modo Oscuro',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
-            onTap: null,
+          Row(
+            children: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context, 
+                      MaterialPageRoute(builder: (context) => const PantallaAcercaDe())
+                    );
+                  },
+                  icon: const Icon(Icons.info),
+                ),
+                const Text(
+                  'Acerca de ...',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
+                ),
+            ],
+          ),
+          Row(
+            children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.dark_mode),
+                ),
+                const Text(
+                  'Modo Oscuro',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                  ),
+                ),
+            ],
           ),
         ],
       ),
