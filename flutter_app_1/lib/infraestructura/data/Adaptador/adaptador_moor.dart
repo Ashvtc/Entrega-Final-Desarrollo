@@ -67,7 +67,7 @@ class AdaptadorMoor implements IRepositorioMoor {
         moorLecciones.forEach(
               (moorLecciones) async {
             final leccion = moorLeccionToLeccion(moorLecciones);
-            lecciones.add(lecciones);
+            lecciones.add(leccion);
           },
         );
         return lecciones;
@@ -103,6 +103,15 @@ class AdaptadorMoor implements IRepositorioMoor {
     return Future(() async {
       final id =
           await cursoDao.insertarCurso(cursoToInsertableMoorCurso(curso));
+      return id;
+    });
+  }
+
+  @override
+  Future<int> insertarLeccion(LeccionTemp leccion) {
+    return Future(() async {
+      final id =
+      await leccionDao.insertarLeccion(leccionToInsertableMoorLeccion(leccion));
       return id;
     });
   }
