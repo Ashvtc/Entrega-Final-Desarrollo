@@ -39,6 +39,15 @@ PreferredSizeWidget? widgetAppBar(String tituloCurso, BuildContext context) {
       },
       icon: const Icon(Icons.arrow_back_ios),
     ),
+    /* title: const Text (
+      'Corsi',
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: 30,
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
+      ),
+    ), */
     // actions: [
     //   like(false),
     // ],
@@ -71,7 +80,7 @@ Widget body(String tituloCurso, String descripcionCurso, String profesor, String
                 padding: const EdgeInsets.only(
                     left: 12, right: 12, top: 10.0, bottom: 10.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(
                       tituloCurso,
@@ -83,11 +92,19 @@ Widget body(String tituloCurso, String descripcionCurso, String profesor, String
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.subtitle2,
                     ),
+                    const Padding(
+                      padding: EdgeInsets.only(
+                        left: 12, right: 12, top: 10.0, bottom: 10.0),
+                    ),
                     Image.network(logoCurso),
                     // Image.asset(
                     //   'assets/imgs/CursoSinFondo.png',
                     //   fit: BoxFit.fitHeight,
                     // ),
+                    const Padding(
+                      padding: EdgeInsets.only(
+                        left: 12, right: 12, top: 10.0, bottom: 10.0),
+                    ),
                     Text(
                       descripcionCurso,
                       style: Theme.of(context).textTheme.subtitle1,
