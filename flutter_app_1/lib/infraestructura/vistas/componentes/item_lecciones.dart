@@ -1,34 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pantalla_1/dominio/agregados/curso/id_curso.dart';
+import 'package:flutter_pantalla_1/dominio/agregados/leccion/leccion.dart';
 import 'package:flutter_pantalla_1/infraestructura/vistas/pantallas/pantalla_leccion_detallada.dart';
 
-class ItemLecciones extends StatefulWidget {
-  final IdCurso idCurso;
-  const ItemLecciones({required this.idCurso, Key? key}) : super(key: key);
+// class ItemLecciones extends StatefulWidget {
+//   final IdCurso idCurso;
+//   final Leccion leccion;
+//   const ItemLecciones({required this.idCurso, required this.leccion, Key? key}) : super(key: key);
 
-  @override
-  State<ItemLecciones> createState() => _ItemLeccionesState();
-}
+//   @override
+//   State<ItemLecciones> createState() => _ItemLeccionesState();
+// }
 
-class _ItemLeccionesState extends State<ItemLecciones> {
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (BuildContext context) {
-              return PantallaDetalleLeccion(
-                  '[Leccion] ${widget.idCurso.getId()}',
-                  '[Descripcion de la leccion]',
-                  'https://www.youtube.com/watch?v=rPYMbhR-8RU');
-            },
-          ),
-        );
-      },
-      child: itemLeccionDetalle(context, widget.idCurso),
-    );
-  }
+// class _ItemLeccionesState extends State<ItemLecciones> {
+//   @override
+Widget itemLecciones(IdCurso idCurso, Leccion? leccion, BuildContext context) {
+  return GestureDetector(
+    onTap: () {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (BuildContext context) {
+            return PantallaDetalleLeccion(
+                leccion!.getTituloLeccion(),
+                leccion.getDescripcionLeccion(),
+                'https://www.youtube.com/watch?v=rPYMbhR-8RU');
+          },
+        ),
+      );
+    },
+    child: itemLeccionDetalle(context, idCurso),
+  );
 }
 
 Widget itemLeccionDetalle(BuildContext context, IdCurso idCurso) {
