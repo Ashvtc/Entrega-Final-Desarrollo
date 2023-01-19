@@ -67,7 +67,7 @@ Widget body(context) {
 Widget nuestroEquipo(context) {
   return Column(
     children: [
-      Image.asset('assets/imgs/team.jpg'),
+      Image.asset('assets/imgs/team.jpg', width: 350),
       const Text(
               'Somos el equipo Titans, conformado por:',
               style: TextStyle(
@@ -78,6 +78,7 @@ Widget nuestroEquipo(context) {
             ),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisSize: MainAxisSize.max,
         children: [
           datosPersona('assets/imgs/profilef.jpg', 'Ashly Colmenares', 'front-end'),
           datosPersona('assets/imgs/profilem4.jpg', 'David Liendo', 'front-end'),
@@ -86,6 +87,7 @@ Widget nuestroEquipo(context) {
       ),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisSize: MainAxisSize.max,
         children: [
           datosPersona('assets/imgs/profilem3.jpg', 'Kleeders Ortiz', 'front-end'),
           datosPersona('assets/imgs/profilem.jpg', 'Daniel Carvajal', 'back-end'),
@@ -94,6 +96,7 @@ Widget nuestroEquipo(context) {
       ),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisSize: MainAxisSize.max,
         children: [
           datosPersona('assets/imgs/profilem.jpg', 'William Gandino', 'back-end'),
           datosPersona('assets/imgs/profilem2.jpg', 'Aitor Parrilla', 'back-end'),
