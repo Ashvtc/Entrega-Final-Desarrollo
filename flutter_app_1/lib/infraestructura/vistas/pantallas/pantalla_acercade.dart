@@ -108,21 +108,24 @@ Widget nuestroEquipo(context) {
 }
 
 Widget datosPersona(imagenProfile, String nombre, String areaTrabajo ) {
-  return Column(
-    children: [
-      Image.asset(imagenProfile, width: 70),
-      Text( nombre,
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-          color: Colors.black,
+  return Padding(
+    padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+    child: Column(
+      children: [
+        Image.asset(imagenProfile, width: 60),
+        Text( nombre,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
         ),
-      ),
-      Text(
-        areaTrabajo,
-        style: const TextStyle(
-          color: Colors.grey,
+        Text(
+          areaTrabajo,
+          style: const TextStyle(
+            color: Colors.grey,
+          ),
         ),
-      ),
-    ],
+      ],
+    ),
   );
 }
