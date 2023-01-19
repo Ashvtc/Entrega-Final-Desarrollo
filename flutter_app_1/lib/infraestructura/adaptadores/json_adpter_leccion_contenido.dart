@@ -53,8 +53,12 @@ class ApiJsonRepositoryLeccionYContenido implements IRepositorioLeccionContenido
 
   @override
   Future<List<Leccion>>? getLecciones(String id) async {
+    print('id de curso -------------------- ${id}');
     List<LeccionDtoNuevo>? lecciones = await Api_Nueva().getLecciones(id);
+    print(lecciones);
+    print('paso la 2da linea');
     List <Leccion>? leccionesAgg = traducirLecciones(lecciones);
+    print('----------------1----------------');
     return leccionesAgg;
   }
 

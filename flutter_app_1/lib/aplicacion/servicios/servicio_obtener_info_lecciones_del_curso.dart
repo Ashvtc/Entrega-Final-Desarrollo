@@ -11,7 +11,12 @@ class ServicioObtenerInfoLeccionesDelCurso {
     IterableLista<Leccion> leccionesIterable = IterableLista();
     List<Leccion>? lecciones;
     List<Contenido>? contenidos;
+    print('****************************');
+    print(idCurso.getId());
     lecciones = await adaptadorLeccion.getLecciones(idCurso.getId());
+    print('Paso la linea');
+    print('****************************');
+
     // contenidos = await adaptadorLeccion.getContenidos(idCurso.getId());
 
     // for (int i = 0; i < lecciones!.length; i++) {

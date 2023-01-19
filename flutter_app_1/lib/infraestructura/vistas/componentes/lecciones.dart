@@ -44,8 +44,14 @@ class _CarouselLeccionesState extends State<CarouselLecciones> {
 
   @override
   void initState() {
+    print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
+    getApiData();
+    print(iteradorLecciones);
+    print('elementos del iterador $elementosIterador');
+    print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
     subscription = Connectivity().onConnectivityChanged.listen((event) async {
       if (await verificarConexionInternet()) {
+        print('///////////////////////111111///////////////////////////////');
         await getApiData();
         // await storeDataLocal();
       }
