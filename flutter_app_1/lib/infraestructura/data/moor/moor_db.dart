@@ -3,10 +3,13 @@ import 'package:flutter_pantalla_1/infraestructura/data/modelo_temporal/curso_te
 import 'package:flutter_pantalla_1/infraestructura/data/modelo_temporal/leccion_temporal.dart';
 import 'package:moor_flutter/moor_flutter.dart';
 
+import '../modelo_temporal/contenido_temp.dart';
+
 
 
 part 'moor_db.g.dart';
 
+// de aqui no hay q cambiar nada
 class MoorCurso extends Table {
   IntColumn get BDid => integer().autoIncrement()();
   IntColumn get idCurso => integer()();
@@ -14,9 +17,10 @@ class MoorCurso extends Table {
   TextColumn get titulo => text()();
   TextColumn get descripcion => text()();
   IntColumn get idProf => integer()();
+  TextColumn get estado => text()();
 
 }
-
+// tampoco hay q cambiar nada aqui
 class MoorLeccion extends Table{
   IntColumn get BDid => integer().autoIncrement()();
   IntColumn get idLeccion => integer()();
@@ -31,8 +35,17 @@ class MoorUsuario extends Table{
   TextColumn get nombreProf => text()();
 }
 
+class MoorContenido extends Table{
+  IntColumn get BDid => integer().autoIncrement()();
+  IntColumn get idContenido => integer()();
+  TextColumn get duracion => text()();
+  TextColumn get titulo => text()();
+  TextColumn get videoUrl => text()();
+  IntColumn get idLeccion => integer()(); //Aqui debe haber una FK
+}
 
-@UseMoor(tables: [MoorCurso, MoorLeccion, MoorUsuario], daos: [CursoDao, LeccionDao, UsuarioDao])
+
+@UseMoor(tables: [MoorCurso, MoorLeccion, MoorUsuario, MoorContenido], daos: [CursoDao, LeccionDao, UsuarioDao])
 class CorsiDataBase extends _$CorsiDataBase{
   CorsiDataBase()
     :super(FlutterQueryExecutor.inDatabaseFolder(path: 'corsi.sqlite', logStatements:  true));
@@ -99,6 +112,18 @@ class UsuarioDao extends DatabaseAccessor<CorsiDataBase> with _$UsuarioDaoMixin 
   //Future deleteUsuario(int id) => Future.value((delete(moorUsuario)..where((tbl) => tbl.idProf.equals(id))).go());
 }
 
+@UseDao(tables: [MoorContenido])
+class ContenidoDao extends DatabaseAccessor<CorsiDataBase> with _$ContenidoDaoMixin{
+  final CorsiDataBase db;
+  ContenidoDao(this.db) : super(db);
+
+  Future<List<MoorContenidoData>> obtenerTodosLosContenidos() => select(moorContenido).get();
+
+  Future<List<MoorContenidoData>> buscarContenidoPorId(int id) => (select(moorContenido)..where((tbl) => tbl.idContenido.equals(id))).get();
+
+  Future<int> insertarContenido(Insertable<MoorContenidoData> contenido) => into(moorContenido).insert(contenido);
+}
+
 CursoTemp moorCursoToCurso(MoorCursoData curso) {
   return CursoTemp(
       BDid: curso.BDid,
@@ -106,7 +131,7 @@ CursoTemp moorCursoToCurso(MoorCursoData curso) {
       logo: curso.logo,
       titulo: curso.titulo,
       descripcion: curso.descripcion,
-      idProf: curso.idProf
+      idProf: curso.idProf, estado: ''
   );
 }
 
@@ -117,6 +142,7 @@ CursoTemp moorCursoToCurso(MoorCursoData curso) {
       titulo: curso.titulo ?? '',
       descripcion: curso.descripcion ?? '',
       idProf: curso.idProf ?? 0,
+      estado: curso.estado ?? '',
     );
   }
 
@@ -152,5 +178,26 @@ Insertable<MoorUsuarioData> usuarioToInsertableMoorUsuario (UsuarioTemp usuario)
     idProf: usuario.idProf ?? 0,
     nombreProf: usuario.nombre ?? '',
   );
+
 }
 
+ContenidoTemp moorContenidoToContenido (MoorContenidoData contenido){
+  return ContenidoTemp (
+    BDid : contenido.BDid,
+    idContenido : contenido.idContenido,
+    duracion : contenido.duracion,
+    titulo : contenido.titulo,
+    videoUrl : contenido.videoUrl,
+    idLeccion : contenido.idLeccion,
+  );
+}
+
+Insertable<MoorContenidoData> contenidoToInsertableMoorContenido (ContenidoTemp contenido) {
+  return MoorContenidoCompanion.insert(
+    idContenido: contenido.idContenido ?? 0,
+    duracion: contenido.duracion ?? '',
+    titulo: contenido.titulo ?? '',
+    videoUrl: contenido.videoUrl ?? '',
+    idLeccion: contenido.idLeccion ?? 0,
+  );
+}

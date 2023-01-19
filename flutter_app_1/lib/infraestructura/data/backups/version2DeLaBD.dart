@@ -1,4 +1,4 @@
-import 'package:flutter_pantalla_1/infraestructura/data/modelo_temporal/usuario_temp.dart';
+/*import 'package:flutter_pantalla_1/infraestructura/data/modelo_temporal/usuario_temp.dart';
 import 'package:flutter_pantalla_1/infraestructura/data/modelo_temporal/curso_temp.dart';
 import 'package:flutter_pantalla_1/infraestructura/data/modelo_temporal/leccion_temporal.dart';
 import 'package:flutter_pantalla_1/infraestructura/data/moor/moor_db.dart';
@@ -7,7 +7,7 @@ import 'package:moor_flutter/moor_flutter.dart';
 // En teoria esta listo, solo habria q reemplazar esto en el archivo de la bd y correr los comandos de migraciones, pero no lo voy a hacer hasta q este lista la api
 // y se pueda probar bien, por si se van a hacer mas cambios y necesitan probar con la api vieja
 
-part 'moor_db.g.dart';
+//part 'moor_db.g.dart';
 
 // de aqui no hay q cambiar nada
 class MoorCurso extends Table {
@@ -245,4 +245,4 @@ Insertable<MoorContenidoData> comentarioToInsertableMoorContenido (ContenidoTemp
     videoId : contenido.videoId ?? 0,
     idLeccion : contenido.idLeccion ?? 0,
   );
-}
+}*/

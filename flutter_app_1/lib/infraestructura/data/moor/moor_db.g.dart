@@ -14,13 +14,15 @@ class MoorCursoData extends DataClass implements Insertable<MoorCursoData> {
   final String titulo;
   final String descripcion;
   final int idProf;
+  final String estado;
   MoorCursoData(
       {required this.BDid,
       required this.idCurso,
       required this.logo,
       required this.titulo,
       required this.descripcion,
-      required this.idProf});
+      required this.idProf,
+      required this.estado});
   factory MoorCursoData.fromData(
       Map<String, dynamic> data, GeneratedDatabase db,
       {String? prefix}) {
@@ -38,6 +40,8 @@ class MoorCursoData extends DataClass implements Insertable<MoorCursoData> {
           .mapFromDatabaseResponse(data['${effectivePrefix}descripcion'])!,
       idProf: const IntType()
           .mapFromDatabaseResponse(data['${effectivePrefix}id_prof'])!,
+      estado: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}estado'])!,
     );
   }
   @override
@@ -49,6 +53,7 @@ class MoorCursoData extends DataClass implements Insertable<MoorCursoData> {
     map['titulo'] = Variable<String>(titulo);
     map['descripcion'] = Variable<String>(descripcion);
     map['id_prof'] = Variable<int>(idProf);
+    map['estado'] = Variable<String>(estado);
     return map;
   }
 
@@ -60,6 +65,7 @@ class MoorCursoData extends DataClass implements Insertable<MoorCursoData> {
       titulo: Value(titulo),
       descripcion: Value(descripcion),
       idProf: Value(idProf),
+      estado: Value(estado),
     );
   }
 
@@ -73,6 +79,7 @@ class MoorCursoData extends DataClass implements Insertable<MoorCursoData> {
       titulo: serializer.fromJson<String>(json['titulo']),
       descripcion: serializer.fromJson<String>(json['descripcion']),
       idProf: serializer.fromJson<int>(json['idProf']),
+      estado: serializer.fromJson<String>(json['estado']),
     );
   }
   @override
@@ -85,6 +92,7 @@ class MoorCursoData extends DataClass implements Insertable<MoorCursoData> {
       'titulo': serializer.toJson<String>(titulo),
       'descripcion': serializer.toJson<String>(descripcion),
       'idProf': serializer.toJson<int>(idProf),
+      'estado': serializer.toJson<String>(estado),
     };
   }
 
@@ -94,7 +102,8 @@ class MoorCursoData extends DataClass implements Insertable<MoorCursoData> {
           String? logo,
           String? titulo,
           String? descripcion,
-          int? idProf}) =>
+          int? idProf,
+          String? estado}) =>
       MoorCursoData(
         BDid: BDid ?? this.BDid,
         idCurso: idCurso ?? this.idCurso,
@@ -102,6 +111,7 @@ class MoorCursoData extends DataClass implements Insertable<MoorCursoData> {
         titulo: titulo ?? this.titulo,
         descripcion: descripcion ?? this.descripcion,
         idProf: idProf ?? this.idProf,
+        estado: estado ?? this.estado,
       );
   @override
   String toString() {
@@ -111,14 +121,15 @@ class MoorCursoData extends DataClass implements Insertable<MoorCursoData> {
           ..write('logo: $logo, ')
           ..write('titulo: $titulo, ')
           ..write('descripcion: $descripcion, ')
-          ..write('idProf: $idProf')
+          ..write('idProf: $idProf, ')
+          ..write('estado: $estado')
           ..write(')'))
         .toString();
   }
 
   @override
   int get hashCode =>
-      Object.hash(BDid, idCurso, logo, titulo, descripcion, idProf);
+      Object.hash(BDid, idCurso, logo, titulo, descripcion, idProf, estado);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -128,7 +139,8 @@ class MoorCursoData extends DataClass implements Insertable<MoorCursoData> {
           other.logo == this.logo &&
           other.titulo == this.titulo &&
           other.descripcion == this.descripcion &&
-          other.idProf == this.idProf);
+          other.idProf == this.idProf &&
+          other.estado == this.estado);
 }
 
 class MoorCursoCompanion extends UpdateCompanion<MoorCursoData> {
@@ -138,6 +150,7 @@ class MoorCursoCompanion extends UpdateCompanion<MoorCursoData> {
   final Value<String> titulo;
   final Value<String> descripcion;
   final Value<int> idProf;
+  final Value<String> estado;
   const MoorCursoCompanion({
     this.BDid = const Value.absent(),
     this.idCurso = const Value.absent(),
@@ -145,6 +158,7 @@ class MoorCursoCompanion extends UpdateCompanion<MoorCursoData> {
     this.titulo = const Value.absent(),
     this.descripcion = const Value.absent(),
     this.idProf = const Value.absent(),
+    this.estado = const Value.absent(),
   });
   MoorCursoCompanion.insert({
     this.BDid = const Value.absent(),
@@ -153,11 +167,13 @@ class MoorCursoCompanion extends UpdateCompanion<MoorCursoData> {
     required String titulo,
     required String descripcion,
     required int idProf,
+    required String estado,
   })  : idCurso = Value(idCurso),
         logo = Value(logo),
         titulo = Value(titulo),
         descripcion = Value(descripcion),
-        idProf = Value(idProf);
+        idProf = Value(idProf),
+        estado = Value(estado);
   static Insertable<MoorCursoData> custom({
     Expression<int>? BDid,
     Expression<int>? idCurso,
@@ -165,6 +181,7 @@ class MoorCursoCompanion extends UpdateCompanion<MoorCursoData> {
     Expression<String>? titulo,
     Expression<String>? descripcion,
     Expression<int>? idProf,
+    Expression<String>? estado,
   }) {
     return RawValuesInsertable({
       if (BDid != null) 'b_did': BDid,
@@ -173,6 +190,7 @@ class MoorCursoCompanion extends UpdateCompanion<MoorCursoData> {
       if (titulo != null) 'titulo': titulo,
       if (descripcion != null) 'descripcion': descripcion,
       if (idProf != null) 'id_prof': idProf,
+      if (estado != null) 'estado': estado,
     });
   }
 
@@ -182,7 +200,8 @@ class MoorCursoCompanion extends UpdateCompanion<MoorCursoData> {
       Value<String>? logo,
       Value<String>? titulo,
       Value<String>? descripcion,
-      Value<int>? idProf}) {
+      Value<int>? idProf,
+      Value<String>? estado}) {
     return MoorCursoCompanion(
       BDid: BDid ?? this.BDid,
       idCurso: idCurso ?? this.idCurso,
@@ -190,6 +209,7 @@ class MoorCursoCompanion extends UpdateCompanion<MoorCursoData> {
       titulo: titulo ?? this.titulo,
       descripcion: descripcion ?? this.descripcion,
       idProf: idProf ?? this.idProf,
+      estado: estado ?? this.estado,
     );
   }
 
@@ -214,6 +234,9 @@ class MoorCursoCompanion extends UpdateCompanion<MoorCursoData> {
     if (idProf.present) {
       map['id_prof'] = Variable<int>(idProf.value);
     }
+    if (estado.present) {
+      map['estado'] = Variable<String>(estado.value);
+    }
     return map;
   }
 
@@ -225,7 +248,8 @@ class MoorCursoCompanion extends UpdateCompanion<MoorCursoData> {
           ..write('logo: $logo, ')
           ..write('titulo: $titulo, ')
           ..write('descripcion: $descripcion, ')
-          ..write('idProf: $idProf')
+          ..write('idProf: $idProf, ')
+          ..write('estado: $estado')
           ..write(')'))
         .toString();
   }
@@ -270,9 +294,14 @@ class $MoorCursoTable extends MoorCurso
   late final GeneratedColumn<int?> idProf = GeneratedColumn<int?>(
       'id_prof', aliasedName, false,
       type: const IntType(), requiredDuringInsert: true);
+  final VerificationMeta _estadoMeta = const VerificationMeta('estado');
+  @override
+  late final GeneratedColumn<String?> estado = GeneratedColumn<String?>(
+      'estado', aliasedName, false,
+      type: const StringType(), requiredDuringInsert: true);
   @override
   List<GeneratedColumn> get $columns =>
-      [BDid, idCurso, logo, titulo, descripcion, idProf];
+      [BDid, idCurso, logo, titulo, descripcion, idProf, estado];
   @override
   String get aliasedName => _alias ?? 'moor_curso';
   @override
@@ -317,6 +346,12 @@ class $MoorCursoTable extends MoorCurso
           idProf.isAcceptableOrUnknown(data['id_prof']!, _idProfMeta));
     } else if (isInserting) {
       context.missing(_idProfMeta);
+    }
+    if (data.containsKey('estado')) {
+      context.handle(_estadoMeta,
+          estado.isAcceptableOrUnknown(data['estado']!, _estadoMeta));
+    } else if (isInserting) {
+      context.missing(_estadoMeta);
     }
     return context;
   }
@@ -841,11 +876,341 @@ class $MoorUsuarioTable extends MoorUsuario
   }
 }
 
+class MoorContenidoData extends DataClass
+    implements Insertable<MoorContenidoData> {
+  final int BDid;
+  final int idContenido;
+  final String duracion;
+  final String titulo;
+  final String videoUrl;
+  final int idLeccion;
+  MoorContenidoData(
+      {required this.BDid,
+      required this.idContenido,
+      required this.duracion,
+      required this.titulo,
+      required this.videoUrl,
+      required this.idLeccion});
+  factory MoorContenidoData.fromData(
+      Map<String, dynamic> data, GeneratedDatabase db,
+      {String? prefix}) {
+    final effectivePrefix = prefix ?? '';
+    return MoorContenidoData(
+      BDid: const IntType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}b_did'])!,
+      idContenido: const IntType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}id_contenido'])!,
+      duracion: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}duracion'])!,
+      titulo: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}titulo'])!,
+      videoUrl: const StringType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}video_url'])!,
+      idLeccion: const IntType()
+          .mapFromDatabaseResponse(data['${effectivePrefix}id_leccion'])!,
+    );
+  }
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['b_did'] = Variable<int>(BDid);
+    map['id_contenido'] = Variable<int>(idContenido);
+    map['duracion'] = Variable<String>(duracion);
+    map['titulo'] = Variable<String>(titulo);
+    map['video_url'] = Variable<String>(videoUrl);
+    map['id_leccion'] = Variable<int>(idLeccion);
+    return map;
+  }
+
+  MoorContenidoCompanion toCompanion(bool nullToAbsent) {
+    return MoorContenidoCompanion(
+      BDid: Value(BDid),
+      idContenido: Value(idContenido),
+      duracion: Value(duracion),
+      titulo: Value(titulo),
+      videoUrl: Value(videoUrl),
+      idLeccion: Value(idLeccion),
+    );
+  }
+
+  factory MoorContenidoData.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= moorRuntimeOptions.defaultSerializer;
+    return MoorContenidoData(
+      BDid: serializer.fromJson<int>(json['BDid']),
+      idContenido: serializer.fromJson<int>(json['idContenido']),
+      duracion: serializer.fromJson<String>(json['duracion']),
+      titulo: serializer.fromJson<String>(json['titulo']),
+      videoUrl: serializer.fromJson<String>(json['videoUrl']),
+      idLeccion: serializer.fromJson<int>(json['idLeccion']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= moorRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'BDid': serializer.toJson<int>(BDid),
+      'idContenido': serializer.toJson<int>(idContenido),
+      'duracion': serializer.toJson<String>(duracion),
+      'titulo': serializer.toJson<String>(titulo),
+      'videoUrl': serializer.toJson<String>(videoUrl),
+      'idLeccion': serializer.toJson<int>(idLeccion),
+    };
+  }
+
+  MoorContenidoData copyWith(
+          {int? BDid,
+          int? idContenido,
+          String? duracion,
+          String? titulo,
+          String? videoUrl,
+          int? idLeccion}) =>
+      MoorContenidoData(
+        BDid: BDid ?? this.BDid,
+        idContenido: idContenido ?? this.idContenido,
+        duracion: duracion ?? this.duracion,
+        titulo: titulo ?? this.titulo,
+        videoUrl: videoUrl ?? this.videoUrl,
+        idLeccion: idLeccion ?? this.idLeccion,
+      );
+  @override
+  String toString() {
+    return (StringBuffer('MoorContenidoData(')
+          ..write('BDid: $BDid, ')
+          ..write('idContenido: $idContenido, ')
+          ..write('duracion: $duracion, ')
+          ..write('titulo: $titulo, ')
+          ..write('videoUrl: $videoUrl, ')
+          ..write('idLeccion: $idLeccion')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(BDid, idContenido, duracion, titulo, videoUrl, idLeccion);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is MoorContenidoData &&
+          other.BDid == this.BDid &&
+          other.idContenido == this.idContenido &&
+          other.duracion == this.duracion &&
+          other.titulo == this.titulo &&
+          other.videoUrl == this.videoUrl &&
+          other.idLeccion == this.idLeccion);
+}
+
+class MoorContenidoCompanion extends UpdateCompanion<MoorContenidoData> {
+  final Value<int> BDid;
+  final Value<int> idContenido;
+  final Value<String> duracion;
+  final Value<String> titulo;
+  final Value<String> videoUrl;
+  final Value<int> idLeccion;
+  const MoorContenidoCompanion({
+    this.BDid = const Value.absent(),
+    this.idContenido = const Value.absent(),
+    this.duracion = const Value.absent(),
+    this.titulo = const Value.absent(),
+    this.videoUrl = const Value.absent(),
+    this.idLeccion = const Value.absent(),
+  });
+  MoorContenidoCompanion.insert({
+    this.BDid = const Value.absent(),
+    required int idContenido,
+    required String duracion,
+    required String titulo,
+    required String videoUrl,
+    required int idLeccion,
+  })  : idContenido = Value(idContenido),
+        duracion = Value(duracion),
+        titulo = Value(titulo),
+        videoUrl = Value(videoUrl),
+        idLeccion = Value(idLeccion);
+  static Insertable<MoorContenidoData> custom({
+    Expression<int>? BDid,
+    Expression<int>? idContenido,
+    Expression<String>? duracion,
+    Expression<String>? titulo,
+    Expression<String>? videoUrl,
+    Expression<int>? idLeccion,
+  }) {
+    return RawValuesInsertable({
+      if (BDid != null) 'b_did': BDid,
+      if (idContenido != null) 'id_contenido': idContenido,
+      if (duracion != null) 'duracion': duracion,
+      if (titulo != null) 'titulo': titulo,
+      if (videoUrl != null) 'video_url': videoUrl,
+      if (idLeccion != null) 'id_leccion': idLeccion,
+    });
+  }
+
+  MoorContenidoCompanion copyWith(
+      {Value<int>? BDid,
+      Value<int>? idContenido,
+      Value<String>? duracion,
+      Value<String>? titulo,
+      Value<String>? videoUrl,
+      Value<int>? idLeccion}) {
+    return MoorContenidoCompanion(
+      BDid: BDid ?? this.BDid,
+      idContenido: idContenido ?? this.idContenido,
+      duracion: duracion ?? this.duracion,
+      titulo: titulo ?? this.titulo,
+      videoUrl: videoUrl ?? this.videoUrl,
+      idLeccion: idLeccion ?? this.idLeccion,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (BDid.present) {
+      map['b_did'] = Variable<int>(BDid.value);
+    }
+    if (idContenido.present) {
+      map['id_contenido'] = Variable<int>(idContenido.value);
+    }
+    if (duracion.present) {
+      map['duracion'] = Variable<String>(duracion.value);
+    }
+    if (titulo.present) {
+      map['titulo'] = Variable<String>(titulo.value);
+    }
+    if (videoUrl.present) {
+      map['video_url'] = Variable<String>(videoUrl.value);
+    }
+    if (idLeccion.present) {
+      map['id_leccion'] = Variable<int>(idLeccion.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('MoorContenidoCompanion(')
+          ..write('BDid: $BDid, ')
+          ..write('idContenido: $idContenido, ')
+          ..write('duracion: $duracion, ')
+          ..write('titulo: $titulo, ')
+          ..write('videoUrl: $videoUrl, ')
+          ..write('idLeccion: $idLeccion')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $MoorContenidoTable extends MoorContenido
+    with TableInfo<$MoorContenidoTable, MoorContenidoData> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $MoorContenidoTable(this.attachedDatabase, [this._alias]);
+  final VerificationMeta _BDidMeta = const VerificationMeta('BDid');
+  @override
+  late final GeneratedColumn<int?> BDid = GeneratedColumn<int?>(
+      'b_did', aliasedName, false,
+      type: const IntType(),
+      requiredDuringInsert: false,
+      defaultConstraints: 'PRIMARY KEY AUTOINCREMENT');
+  final VerificationMeta _idContenidoMeta =
+      const VerificationMeta('idContenido');
+  @override
+  late final GeneratedColumn<int?> idContenido = GeneratedColumn<int?>(
+      'id_contenido', aliasedName, false,
+      type: const IntType(), requiredDuringInsert: true);
+  final VerificationMeta _duracionMeta = const VerificationMeta('duracion');
+  @override
+  late final GeneratedColumn<String?> duracion = GeneratedColumn<String?>(
+      'duracion', aliasedName, false,
+      type: const StringType(), requiredDuringInsert: true);
+  final VerificationMeta _tituloMeta = const VerificationMeta('titulo');
+  @override
+  late final GeneratedColumn<String?> titulo = GeneratedColumn<String?>(
+      'titulo', aliasedName, false,
+      type: const StringType(), requiredDuringInsert: true);
+  final VerificationMeta _videoUrlMeta = const VerificationMeta('videoUrl');
+  @override
+  late final GeneratedColumn<String?> videoUrl = GeneratedColumn<String?>(
+      'video_url', aliasedName, false,
+      type: const StringType(), requiredDuringInsert: true);
+  final VerificationMeta _idLeccionMeta = const VerificationMeta('idLeccion');
+  @override
+  late final GeneratedColumn<int?> idLeccion = GeneratedColumn<int?>(
+      'id_leccion', aliasedName, false,
+      type: const IntType(), requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns =>
+      [BDid, idContenido, duracion, titulo, videoUrl, idLeccion];
+  @override
+  String get aliasedName => _alias ?? 'moor_contenido';
+  @override
+  String get actualTableName => 'moor_contenido';
+  @override
+  VerificationContext validateIntegrity(Insertable<MoorContenidoData> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('b_did')) {
+      context.handle(
+          _BDidMeta, BDid.isAcceptableOrUnknown(data['b_did']!, _BDidMeta));
+    }
+    if (data.containsKey('id_contenido')) {
+      context.handle(
+          _idContenidoMeta,
+          idContenido.isAcceptableOrUnknown(
+              data['id_contenido']!, _idContenidoMeta));
+    } else if (isInserting) {
+      context.missing(_idContenidoMeta);
+    }
+    if (data.containsKey('duracion')) {
+      context.handle(_duracionMeta,
+          duracion.isAcceptableOrUnknown(data['duracion']!, _duracionMeta));
+    } else if (isInserting) {
+      context.missing(_duracionMeta);
+    }
+    if (data.containsKey('titulo')) {
+      context.handle(_tituloMeta,
+          titulo.isAcceptableOrUnknown(data['titulo']!, _tituloMeta));
+    } else if (isInserting) {
+      context.missing(_tituloMeta);
+    }
+    if (data.containsKey('video_url')) {
+      context.handle(_videoUrlMeta,
+          videoUrl.isAcceptableOrUnknown(data['video_url']!, _videoUrlMeta));
+    } else if (isInserting) {
+      context.missing(_videoUrlMeta);
+    }
+    if (data.containsKey('id_leccion')) {
+      context.handle(_idLeccionMeta,
+          idLeccion.isAcceptableOrUnknown(data['id_leccion']!, _idLeccionMeta));
+    } else if (isInserting) {
+      context.missing(_idLeccionMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {BDid};
+  @override
+  MoorContenidoData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    return MoorContenidoData.fromData(data, attachedDatabase,
+        prefix: tablePrefix != null ? '$tablePrefix.' : null);
+  }
+
+  @override
+  $MoorContenidoTable createAlias(String alias) {
+    return $MoorContenidoTable(attachedDatabase, alias);
+  }
+}
+
 abstract class _$CorsiDataBase extends GeneratedDatabase {
   _$CorsiDataBase(QueryExecutor e) : super(SqlTypeSystem.defaultInstance, e);
   late final $MoorCursoTable moorCurso = $MoorCursoTable(this);
   late final $MoorLeccionTable moorLeccion = $MoorLeccionTable(this);
   late final $MoorUsuarioTable moorUsuario = $MoorUsuarioTable(this);
+  late final $MoorContenidoTable moorContenido = $MoorContenidoTable(this);
   late final CursoDao cursoDao = CursoDao(this as CorsiDataBase);
   late final LeccionDao leccionDao = LeccionDao(this as CorsiDataBase);
   late final UsuarioDao usuarioDao = UsuarioDao(this as CorsiDataBase);
@@ -853,7 +1218,7 @@ abstract class _$CorsiDataBase extends GeneratedDatabase {
   Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities =>
-      [moorCurso, moorLeccion, moorUsuario];
+      [moorCurso, moorLeccion, moorUsuario, moorContenido];
 }
 
 // **************************************************************************
@@ -868,4 +1233,7 @@ mixin _$LeccionDaoMixin on DatabaseAccessor<CorsiDataBase> {
 }
 mixin _$UsuarioDaoMixin on DatabaseAccessor<CorsiDataBase> {
   $MoorUsuarioTable get moorUsuario => attachedDatabase.moorUsuario;
+}
+mixin _$ContenidoDaoMixin on DatabaseAccessor<CorsiDataBase> {
+  $MoorContenidoTable get moorContenido => attachedDatabase.moorContenido;
 }

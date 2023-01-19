@@ -33,6 +33,7 @@ class ServicioGuardarInfoCursoProfesorDB{
           titulo: curso.tituloCurso.getTitulo(),
           descripcion: curso.descripcionCurso.getDescripcion(),
           idProf: int.parse(curso.idProfesor.getId()),
+          estado: curso.estado,
         ),
       );
     }
