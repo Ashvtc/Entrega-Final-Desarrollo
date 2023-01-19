@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_pantalla_1/dominio/agregados/curso/id_curso.dart';
 import '../componentes/lecciones.dart';
 
 class PantallaDetalleCurso extends StatelessWidget {
+  final String idCurso;
   final String tituloCurso;
   final String descripcionCurso;
   final String profesor;
   final String logoCurso;
-  const PantallaDetalleCurso(
-      this.tituloCurso, this.descripcionCurso, this.profesor, this.logoCurso,
-      {Key? key})
-      : super(key: key);
+    const PantallaDetalleCurso({
+    required this.idCurso, required this.tituloCurso, required this.descripcionCurso, required this.profesor, required this.logoCurso,
+    Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class PantallaDetalleCurso extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            body(tituloCurso, descripcionCurso, profesor, logoCurso, context), //Se muestra la información detallada del curso
+            body(idCurso, tituloCurso, descripcionCurso, profesor, logoCurso, context), //Se muestra la información detallada del curso
           ],
         ),
       ),
@@ -56,7 +57,7 @@ PreferredSizeWidget? widgetAppBar(String tituloCurso, BuildContext context) {
 
 
 //Informacion detallada del curso
-Widget body(String tituloCurso, String descripcionCurso, String profesor, String logoCurso, BuildContext context) { 
+Widget body(String idCurso, String tituloCurso, String descripcionCurso, String profesor, String logoCurso, BuildContext context) { 
   Size size = MediaQuery.of(context).size;
   return SingleChildScrollView(
     child: Column(
@@ -110,7 +111,7 @@ Widget body(String tituloCurso, String descripcionCurso, String profesor, String
                       style: Theme.of(context).textTheme.subtitle1,
                       textAlign: TextAlign.justify,
                     ),
-                    leccionCurso(context),          //Se muestra el carrusel de las lecciones disponibles que tiene el curso
+                     leccionCurso(context, idCurso),                  //Se muestra el carrusel de las lecciones disponibles que tiene el curso
                   ],
                 ),
               ),
@@ -124,7 +125,7 @@ Widget body(String tituloCurso, String descripcionCurso, String profesor, String
 
 
 //Carrusel de lecciones disponibles del curso
-Widget leccionCurso(context) {                      
+Widget leccionCurso(context, String idcurso) {                                      
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
@@ -145,7 +146,7 @@ Widget leccionCurso(context) {
           ],
         ),
       ),
-      CarouselLecciones(context),
+      CarouselLecciones(idCurso: IdCurso(id: idcurso), context: context),
     ],
   );
 }
