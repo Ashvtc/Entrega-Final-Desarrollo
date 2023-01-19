@@ -18,9 +18,13 @@ class LeccionesContentResponsive extends StatelessWidget {
 
   LeccionesContentResponsive(this.horizontalPadding);
 
-  final leccionid = TextEditingController();
+  final leccionidcurso = TextEditingController();
   final lecciontitulo = TextEditingController();
   final lecciondescripcion = TextEditingController();
+  final lecciontitulovideo = TextEditingController();
+  final leccionurlvideo = TextEditingController();
+  final lecciontipovideo = TextEditingController();
+  final leccionduracionvideo =TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +41,9 @@ class LeccionesContentResponsive extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: TextField(
-                controller: leccionid,
+                controller: leccionidcurso,
                 decoration: 
-                  InputDecoration(border: OutlineInputBorder(), labelText: 'Id')),
+                  InputDecoration(border: OutlineInputBorder(), labelText: 'Id Curso')),
             ),
             SizedBox(height: 4),
             Container(
@@ -58,12 +62,52 @@ class LeccionesContentResponsive extends StatelessWidget {
                   InputDecoration(border: OutlineInputBorder(), labelText: 'Descripcion')),
             ),
             SizedBox(height: 10),
+            SizedBox(height: 4),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+              child: TextField(
+                controller: lecciontitulovideo,
+                decoration: 
+                  InputDecoration(border: OutlineInputBorder(), labelText: 'Titulo Video')),
+            ),
+            SizedBox(height: 4),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+              child: TextField(
+                controller: leccionurlvideo,
+                decoration: 
+                  InputDecoration(border: OutlineInputBorder(), labelText: 'URL Video')),
+            ),
+            SizedBox(height: 4),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+              child: TextField(
+                controller: lecciontipovideo,
+                decoration: 
+                  InputDecoration(border: OutlineInputBorder(), labelText: 'Tipo Video')),
+            ),
+            SizedBox(height: 4),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+              child: TextField(
+                controller: leccionduracionvideo,
+                decoration: 
+                  InputDecoration(border: OutlineInputBorder(), labelText: 'Duracion Video')),
+            ),
+            SizedBox(height: 10),
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               alignment: Alignment.center,
               child: ElevatedButton(
                 onPressed: (){
-                  InsertarLeccionService().InsertarLeccion();
+                    String leccionidcurso2 = leccionidcurso.toString();
+                    String lecciontitulo2 = lecciontitulo.toString();
+                    String lecciondescripcion2 = lecciondescripcion.toString();
+                    String lecciontitulovideo2 = lecciontitulo.toString();
+                    String leccionurlvideo2 = leccionurlvideo.toString();
+                    String lecciontipovideo2 = lecciontipovideo.toString();
+                    String leccionduracionvideo2 =leccionduracionvideo.toString();
+                  InsertarLeccionService().InsertarLeccion(leccionidcurso2, lecciontitulo2, lecciondescripcion2, lecciontitulovideo2, leccionurlvideo2, lecciontipovideo2, leccionduracionvideo2);
                 },
                 child: Text(
                   'Añadir',
