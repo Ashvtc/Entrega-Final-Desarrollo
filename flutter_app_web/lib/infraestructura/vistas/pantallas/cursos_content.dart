@@ -21,6 +21,7 @@ class CursosContentResponsive extends StatelessWidget {
 
   CursosContentResponsive(this.horizontalPadding);
 
+  final cursoid = TextEditingController();
   final cursostate = TextEditingController();
   final cursotitulo = TextEditingController();
   final cursologo = TextEditingController();
@@ -44,9 +45,9 @@ class CursosContentResponsive extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: TextField(
-                controller: cursostate,
+                controller: cursoid,
                 decoration: 
-                  InputDecoration(border: OutlineInputBorder(), labelText: 'Estado')),
+                  InputDecoration(border: OutlineInputBorder(), labelText: 'ID')),
             ),
             SizedBox(height: 4),
             Container(
@@ -80,18 +81,27 @@ class CursosContentResponsive extends StatelessWidget {
                 decoration: 
                   InputDecoration(border: OutlineInputBorder(), labelText: 'Descripcion')),
             ),
+            SizedBox(height: 4),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+              child: TextField(
+                controller: cursostate,
+                decoration: 
+                  InputDecoration(border: OutlineInputBorder(), labelText: 'Estado')),
+            ),
             SizedBox(height: 10),
             Container(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               alignment: Alignment.center,
               child: ElevatedButton(
                 onPressed: () async {
+                  String cursoid2 = cursoid.toString();
                   String cursostate2 = cursostate.toString();
                   String cursotitulo2 = cursotitulo.toString();
                   String cursologo2 = cursologo.toString();
                   String cursoprofesor2 = cursoprofesor.toString();
                   String cursodescripcion2 = cursodescripcion.toString();
-                  InsertarCursoService().InsertarCurso(cursostate2, cursotitulo2, cursologo2, cursoprofesor2, cursodescripcion2);
+                  InsertarCursoService().InsertarCurso(cursoid2, cursostate2, cursotitulo2, cursologo2, cursoprofesor2, cursodescripcion2);
                 },
                 child: Text(
                   'Ingresar',

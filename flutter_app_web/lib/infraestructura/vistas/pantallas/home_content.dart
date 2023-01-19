@@ -2,10 +2,6 @@ import 'package:flutter_app_web/infraestructura/vistas/componentes/widgets/respo
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-const googlePlayURL =
-    'https://play.google.com/store/apps/details?id=com.google.android.youtube';
-const appStoreURL = 'https://apps.apple.com/tw/app/youtube/id544007664';
-
 class HomeContent extends ResponsiveWidget {
   const HomeContent({Key? key}) : super(key: key);
 
@@ -41,11 +37,11 @@ class DesktopHomeContent extends StatelessWidget {
                 ),
                 SizedBox(height: 24),
                   Text(
-                    'Corsi, El Mejor sitio para ser Autodidacta',
+                    'El Mejor sitio para ser Autodidacta',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                 ),
                 Text(
-                  'A Continuacion podra Añadir, eliminar y Modificar Tanto Cursos como Lecciones',
+                  'A Continuacion podra Añadir Tanto Cursos como Lecciones',
                 ),
                 SizedBox(height: 24),
                 Row(

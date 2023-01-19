@@ -3,12 +3,13 @@ import 'package:http/http.dart' as http;
 // Aqui hay que colocar la Configuracion de la API
 
 class InsertarCursoService {
-  InsertarCurso(String cursostate, String cursotitulo, String cursologo, String cursoprofesor, String cursodescripcion) async{
-    var url = Uri.https('URL Del API');
+  InsertarCurso(String cursoid, String cursostate, String cursotitulo, String cursologo, String cursoprofesor, String cursodescripcion) async{
+    var url = Uri.https('localhost:3000/courses');
 
     var response = await http.post(
       url, 
-      body: {"title": cursotitulo,
+      body: {"courseId": cursoid,
+    "title": cursotitulo,
     "descripcion": cursodescripcion,
     "state": cursostate,
     "imagen": cursologo,

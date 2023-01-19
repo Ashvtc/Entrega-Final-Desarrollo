@@ -18,6 +18,7 @@ final currentPageProvider = StateProvider<GlobalKey>((_) => homeKey);
 final scrolledProvider = StateProvider<bool>((_) => false);
 
 class AppWeb extends HookConsumerWidget {
+  //ApiService apiService = ApiService();
   void onScroll(ScrollController controller, WidgetRef ref) {
     final isScrolled = ref.read(scrolledProvider);
 
@@ -63,11 +64,11 @@ class AppWeb extends HookConsumerWidget {
                     children: <Widget>[
                       HomeContent(key: homeKey),
                       CursosContent(key: CursosKey),
-                      CursosDeleteContent(),
-                      CursosUpdateContent(),
+                      //CursosDeleteContent(),
+                      //CursosUpdateContent(),
                       LeccionesContent(key: LeccionesKey),
-                      LeccionesDeleteContent(),
-                      LeccionesUpdateContent(),
+                      //LeccionesDeleteContent(),
+                      //LeccionesUpdateContent(),
                       SizedBox(height: 50)
                     ],
                   ),
